@@ -1,0 +1,13 @@
+//
+//  Development.xcconfig
+//  NVibe
+//
+//  Created by Raphaël Huang-Dubois on 17/04/2024.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://help.apple.com/xcode/#/dev745c5c974
+
+/// Should create a local environment file associated with a run script to dynamically populate this file.
+/// Then the file should be added in the .gitignore since client-side secrets cannot be pushed on the server.
+API_KEY = sk.eyJ1IjoidGFpemR0YWl3YW4iLCJhIjoiY2x2M3ZqODNtMDIyMDJqbXcwN3djeHZuYiJ9.FpX7oxFd-q8p9tg2NIwRaQ
