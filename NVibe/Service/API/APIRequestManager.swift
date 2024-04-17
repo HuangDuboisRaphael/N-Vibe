@@ -39,29 +39,25 @@ final class APIRequestManager: APIRequestManagerInterface {
     }
 }
 
-/// To handle HTTPURLResponse errors.
+/// To handle HTTPURLResponse errors specific to MapBox API.
 private extension APIRequestManager {
     func validateResponse(_ response: URLResponse) throws {
         guard let response = response as? HTTPURLResponse else {
-            throw APIErrorHandler.badRequest
+            return
         }
         switch response.statusCode {
-        case 200..<300:
+        case 200:
             return
-        case 400:
-            throw APIErrorHandler.badRequest
         case 401:
-            throw APIErrorHandler.unauthorized
+            throw APIErrorHandler.notAuthorized
+        case 403:
+            throw APIErrorHandler.forbidden
         case 404:
-            throw APIErrorHandler.notFound
-        case 408:
-            throw APIErrorHandler.requestTimeout
-        case 429:
-            throw APIErrorHandler.tooManyRequests
-        case 500:
-            throw APIErrorHandler.serverError
+            throw APIErrorHandler.profileNotFound
+        case 422:
+            throw APIErrorHandler.invalidInput
         default:
-            throw APIErrorHandler.http(statusCode: response.statusCode)
+            throw APIErrorHandler.unknownError(statusCode: response.statusCode)
         }
     }
 }

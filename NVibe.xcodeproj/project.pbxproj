@@ -21,14 +21,18 @@
 		C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* ParentCoordinator.swift */; };
 		C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E82BD009EA0045527C /* ChildCoordinator.swift */; };
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
-		C2B8D50C2BD01A94007529A6 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = C2B8D50B2BD01A94007529A6 /* MapboxMaps */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
 		C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5162BD02613007529A6 /* HTTPMethod.swift */; };
 		C2B8D51A2BD02662007529A6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5192BD02662007529A6 /* HomeService.swift */; };
 		C2B8D51C2BD02673007529A6 /* HomeServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D51B2BD02673007529A6 /* HomeServiceProvider.swift */; };
-		C2B8D5212BD02AE2007529A6 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5202BD02AE2007529A6 /* Environment.swift */; };
+		C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5202BD02AE2007529A6 /* Configuration.swift */; };
+		C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5232BD059D9007529A6 /* Direction.swift */; };
+		C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5252BD05A14007529A6 /* Waypoint.swift */; };
+		C2B8D5282BD05A65007529A6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5272BD05A65007529A6 /* Route.swift */; };
+		C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D52A2BD07476007529A6 /* LocationManager.swift */; };
+		C2B8D52E2BD08C94007529A6 /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = C2B8D52D2BD08C94007529A6 /* MapboxNavigation */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,7 +78,11 @@
 		C2B8D5192BD02662007529A6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		C2B8D51B2BD02673007529A6 /* HomeServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceProvider.swift; sourceTree = "<group>"; };
 		C2B8D51F2BD02A13007529A6 /* ConfigFile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigFile.xcconfig; sourceTree = "<group>"; };
-		C2B8D5202BD02AE2007529A6 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		C2B8D5202BD02AE2007529A6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		C2B8D5232BD059D9007529A6 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
+		C2B8D5252BD05A14007529A6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
+		C2B8D5272BD05A65007529A6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		C2B8D52A2BD07476007529A6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B8D50C2BD01A94007529A6 /* MapboxMaps in Frameworks */,
+				C2B8D52E2BD08C94007529A6 /* MapboxNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +137,7 @@
 				C224C5DC2BD008470045527C /* .swiftlint.yml */,
 				C224C5DE2BD009510045527C /* App */,
 				C2B8D51E2BD029EA007529A6 /* Configuration */,
+				C2B8D5222BD04E2A007529A6 /* Model */,
 				C224C5EA2BD00A680045527C /* Resources */,
 				C224C5EB2BD00A7D0045527C /* Scenes */,
 				C2B8D50D2BD0257E007529A6 /* Service */,
@@ -220,13 +229,14 @@
 		C2B8D50D2BD0257E007529A6 /* Service */ = {
 			isa = PBXGroup;
 			children = (
-				C2B8D50E2BD02597007529A6 /* Manager */,
+				C2B8D5292BD0746C007529A6 /* Location */,
+				C2B8D50E2BD02597007529A6 /* API */,
 				C2B8D5182BD02651007529A6 /* Home */,
 			);
 			path = Service;
 			sourceTree = "<group>";
 		};
-		C2B8D50E2BD02597007529A6 /* Manager */ = {
+		C2B8D50E2BD02597007529A6 /* API */ = {
 			isa = PBXGroup;
 			children = (
 				C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */,
@@ -234,7 +244,7 @@
 				C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */,
 				C2B8D5162BD02613007529A6 /* HTTPMethod.swift */,
 			);
-			path = Manager;
+			path = API;
 			sourceTree = "<group>";
 		};
 		C2B8D5182BD02651007529A6 /* Home */ = {
@@ -249,10 +259,28 @@
 		C2B8D51E2BD029EA007529A6 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				C2B8D5202BD02AE2007529A6 /* Environment.swift */,
+				C2B8D5202BD02AE2007529A6 /* Configuration.swift */,
 				C2B8D51F2BD02A13007529A6 /* ConfigFile.xcconfig */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		C2B8D5222BD04E2A007529A6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C2B8D5232BD059D9007529A6 /* Direction.swift */,
+				C2B8D5252BD05A14007529A6 /* Waypoint.swift */,
+				C2B8D5272BD05A65007529A6 /* Route.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C2B8D5292BD0746C007529A6 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				C2B8D52A2BD07476007529A6 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,7 +301,7 @@
 			);
 			name = NVibe;
 			packageProductDependencies = (
-				C2B8D50B2BD01A94007529A6 /* MapboxMaps */,
+				C2B8D52D2BD08C94007529A6 /* MapboxNavigation */,
 			);
 			productName = NVibe;
 			productReference = C224C5A82BD007FC0045527C /* NVibe.app */;
@@ -348,7 +376,7 @@
 			);
 			mainGroup = C224C59F2BD007FC0045527C;
 			packageReferences = (
-				C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
 			);
 			productRefGroup = C224C5A92BD007FC0045527C /* Products */;
 			projectDirPath = "";
@@ -417,15 +445,19 @@
 			files = (
 				C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */,
 				C2B8D51C2BD02673007529A6 /* HomeServiceProvider.swift in Sources */,
+				C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */,
 				C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */,
 				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
-				C2B8D5212BD02AE2007529A6 /* Environment.swift in Sources */,
+				C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */,
+				C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */,
 				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,
 				C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */,
 				C224C5E52BD009C00045527C /* Coordinator.swift in Sources */,
+				C2B8D5282BD05A65007529A6 /* Route.swift in Sources */,
 				C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */,
 				C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */,
 				C2B8D51A2BD02662007529A6 /* HomeService.swift in Sources */,
+				C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */,
 				C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */,
 				C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */,
 				C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */,
@@ -608,6 +640,8 @@
 				DEVELOPMENT_TEAM = V54XUHS56L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NVibe/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -640,6 +674,8 @@
 				DEVELOPMENT_TEAM = V54XUHS56L;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = NVibe/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -780,21 +816,21 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+		C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 11.0.0;
+				minimumVersion = 2.18.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C2B8D50B2BD01A94007529A6 /* MapboxMaps */ = {
+		C2B8D52D2BD08C94007529A6 /* MapboxNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
-			productName = MapboxMaps;
+			package = C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

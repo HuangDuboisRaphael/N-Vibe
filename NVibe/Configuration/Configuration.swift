@@ -1,5 +1,5 @@
 //
-//  Environment.swift
+//  Configuration.swift
 //  NVibe
 //
 //  Created by Raphaël Huang-Dubois on 17/04/2024.
@@ -11,15 +11,29 @@ enum Environment {
     case development
     case staging
     case production
+}
+
+enum API {
+    static var baseUrl: String {
+        "https://api.mapbox.com/directions/v5/mapbox"
+    }
     
+    enum Path {
+        static var walking: String {
+            "/walking/"
+        }
+    }
+}
+
+enum Configuration {
     enum Keys {
         static let apiKey = "API_KEY"
     }
 }
 
-extension Environment {
+extension Configuration {
     static let apiKey: String = {
-        guard let apiKey = Environment.infoDictionary[Keys.apiKey] as? String else {
+        guard let apiKey = Configuration.infoDictionary[Keys.apiKey] as? String else {
             fatalError("API key not set in plist.")
         }
         return apiKey
