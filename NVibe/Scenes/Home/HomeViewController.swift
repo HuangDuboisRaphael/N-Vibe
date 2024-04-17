@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MapboxMaps
 
 class HomeViewController: UIViewController {
     weak var homeCoordinator: HomeCoordinator?
@@ -13,6 +14,5 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .red
-        // Do any additional setup after loading the view.
     }
 }

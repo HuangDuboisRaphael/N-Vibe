@@ -21,6 +21,7 @@
 		C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* ParentCoordinator.swift */; };
 		C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E82BD009EA0045527C /* ChildCoordinator.swift */; };
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
+		C2B8D50C2BD01A94007529A6 /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = C2B8D50B2BD01A94007529A6 /* MapboxMaps */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C2B8D50C2BD01A94007529A6 /* MapboxMaps in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -215,6 +217,9 @@
 			dependencies = (
 			);
 			name = NVibe;
+			packageProductDependencies = (
+				C2B8D50B2BD01A94007529A6 /* MapboxMaps */,
+			);
 			productName = NVibe;
 			productReference = C224C5A82BD007FC0045527C /* NVibe.app */;
 			productType = "com.apple.product-type.application";
@@ -287,6 +292,9 @@
 				Base,
 			);
 			mainGroup = C224C59F2BD007FC0045527C;
+			packageReferences = (
+				C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+			);
 			productRefGroup = C224C5A92BD007FC0045527C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -706,6 +714,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C2B8D50B2BD01A94007529A6 /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C2B8D50A2BD01A94007529A6 /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C224C5A02BD007FC0045527C /* Project object */;
 }
