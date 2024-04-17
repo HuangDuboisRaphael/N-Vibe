@@ -1,0 +1,612 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AB2BD007FC0045527C /* AppDelegate.swift */; };
+		C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AD2BD007FC0045527C /* SceneDelegate.swift */; };
+		C224C5B02BD007FC0045527C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* ViewController.swift */; };
+		C224C5B32BD007FC0045527C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B22BD007FC0045527C /* Base */; };
+		C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B42BD007FF0045527C /* Assets.xcassets */; };
+		C224C5B82BD007FF0045527C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B72BD007FF0045527C /* Base */; };
+		C224C5C32BD007FF0045527C /* NVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5C22BD007FF0045527C /* NVibeTests.swift */; };
+		C224C5CD2BD007FF0045527C /* NVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CC2BD007FF0045527C /* NVibeUITests.swift */; };
+		C224C5CF2BD007FF0045527C /* NVibeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C224C5BF2BD007FF0045527C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C224C5A02BD007FC0045527C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C224C5A72BD007FC0045527C;
+			remoteInfo = NVibe;
+		};
+		C224C5C92BD007FF0045527C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C224C5A02BD007FC0045527C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C224C5A72BD007FC0045527C;
+			remoteInfo = NVibe;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C224C5A82BD007FC0045527C /* NVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C224C5AB2BD007FC0045527C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C224C5AD2BD007FC0045527C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		C224C5AF2BD007FC0045527C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C224C5B22BD007FC0045527C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C224C5B42BD007FF0045527C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C224C5B72BD007FF0045527C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C224C5B92BD007FF0045527C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C224C5BE2BD007FF0045527C /* NVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C224C5C22BD007FF0045527C /* NVibeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeTests.swift; sourceTree = "<group>"; };
+		C224C5C82BD007FF0045527C /* NVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C224C5CC2BD007FF0045527C /* NVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITests.swift; sourceTree = "<group>"; };
+		C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C224C5A52BD007FC0045527C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5BB2BD007FF0045527C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5C52BD007FF0045527C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C224C59F2BD007FC0045527C = {
+			isa = PBXGroup;
+			children = (
+				C224C5AA2BD007FC0045527C /* NVibe */,
+				C224C5C12BD007FF0045527C /* NVibeTests */,
+				C224C5CB2BD007FF0045527C /* NVibeUITests */,
+				C224C5A92BD007FC0045527C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C224C5A92BD007FC0045527C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5A82BD007FC0045527C /* NVibe.app */,
+				C224C5BE2BD007FF0045527C /* NVibeTests.xctest */,
+				C224C5C82BD007FF0045527C /* NVibeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C224C5AA2BD007FC0045527C /* NVibe */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5AB2BD007FC0045527C /* AppDelegate.swift */,
+				C224C5AD2BD007FC0045527C /* SceneDelegate.swift */,
+				C224C5AF2BD007FC0045527C /* ViewController.swift */,
+				C224C5B12BD007FC0045527C /* Main.storyboard */,
+				C224C5B42BD007FF0045527C /* Assets.xcassets */,
+				C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */,
+				C224C5B92BD007FF0045527C /* Info.plist */,
+			);
+			path = NVibe;
+			sourceTree = "<group>";
+		};
+		C224C5C12BD007FF0045527C /* NVibeTests */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5C22BD007FF0045527C /* NVibeTests.swift */,
+			);
+			path = NVibeTests;
+			sourceTree = "<group>";
+		};
+		C224C5CB2BD007FF0045527C /* NVibeUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5CC2BD007FF0045527C /* NVibeUITests.swift */,
+				C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */,
+			);
+			path = NVibeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C224C5A72BD007FC0045527C /* NVibe */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C224C5D22BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibe" */;
+			buildPhases = (
+				C224C5A42BD007FC0045527C /* Sources */,
+				C224C5A52BD007FC0045527C /* Frameworks */,
+				C224C5A62BD007FC0045527C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NVibe;
+			productName = NVibe;
+			productReference = C224C5A82BD007FC0045527C /* NVibe.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C224C5BD2BD007FF0045527C /* NVibeTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C224C5D52BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeTests" */;
+			buildPhases = (
+				C224C5BA2BD007FF0045527C /* Sources */,
+				C224C5BB2BD007FF0045527C /* Frameworks */,
+				C224C5BC2BD007FF0045527C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C224C5C02BD007FF0045527C /* PBXTargetDependency */,
+			);
+			name = NVibeTests;
+			productName = NVibeTests;
+			productReference = C224C5BE2BD007FF0045527C /* NVibeTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C224C5C72BD007FF0045527C /* NVibeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C224C5D82BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeUITests" */;
+			buildPhases = (
+				C224C5C42BD007FF0045527C /* Sources */,
+				C224C5C52BD007FF0045527C /* Frameworks */,
+				C224C5C62BD007FF0045527C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C224C5CA2BD007FF0045527C /* PBXTargetDependency */,
+			);
+			name = NVibeUITests;
+			productName = NVibeUITests;
+			productReference = C224C5C82BD007FF0045527C /* NVibeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C224C5A02BD007FC0045527C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1530;
+				LastUpgradeCheck = 1530;
+				TargetAttributes = {
+					C224C5A72BD007FC0045527C = {
+						CreatedOnToolsVersion = 15.3;
+					};
+					C224C5BD2BD007FF0045527C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = C224C5A72BD007FC0045527C;
+					};
+					C224C5C72BD007FF0045527C = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = C224C5A72BD007FC0045527C;
+					};
+				};
+			};
+			buildConfigurationList = C224C5A32BD007FC0045527C /* Build configuration list for PBXProject "NVibe" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C224C59F2BD007FC0045527C;
+			productRefGroup = C224C5A92BD007FC0045527C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C224C5A72BD007FC0045527C /* NVibe */,
+				C224C5BD2BD007FF0045527C /* NVibeTests */,
+				C224C5C72BD007FF0045527C /* NVibeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C224C5A62BD007FC0045527C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */,
+				C224C5B82BD007FF0045527C /* Base in Resources */,
+				C224C5B32BD007FC0045527C /* Base in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5BC2BD007FF0045527C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5C62BD007FF0045527C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C224C5A42BD007FC0045527C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C224C5B02BD007FC0045527C /* ViewController.swift in Sources */,
+				C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */,
+				C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5BA2BD007FF0045527C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C224C5C32BD007FF0045527C /* NVibeTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C224C5C42BD007FF0045527C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C224C5CD2BD007FF0045527C /* NVibeUITests.swift in Sources */,
+				C224C5CF2BD007FF0045527C /* NVibeUITestsLaunchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C224C5C02BD007FF0045527C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C224C5A72BD007FC0045527C /* NVibe */;
+			targetProxy = C224C5BF2BD007FF0045527C /* PBXContainerItemProxy */;
+		};
+		C224C5CA2BD007FF0045527C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C224C5A72BD007FC0045527C /* NVibe */;
+			targetProxy = C224C5C92BD007FF0045527C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C224C5B12BD007FC0045527C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C224C5B22BD007FC0045527C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C224C5B72BD007FF0045527C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C224C5D02BD007FF0045527C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		C224C5D12BD007FF0045527C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C224C5D32BD007FF0045527C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NVibe/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C224C5D42BD007FF0045527C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = NVibe/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibe;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		C224C5D62BD007FF0045527C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NVibe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NVibe";
+			};
+			name = Debug;
+		};
+		C224C5D72BD007FF0045527C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NVibe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NVibe";
+			};
+			name = Release;
+		};
+		C224C5D92BD007FF0045527C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NVibe;
+			};
+			name = Debug;
+		};
+		C224C5DA2BD007FF0045527C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V54XUHS56L;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = NVibe;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C224C5A32BD007FC0045527C /* Build configuration list for PBXProject "NVibe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C224C5D02BD007FF0045527C /* Debug */,
+				C224C5D12BD007FF0045527C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C224C5D22BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibe" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C224C5D32BD007FF0045527C /* Debug */,
+				C224C5D42BD007FF0045527C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C224C5D52BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C224C5D62BD007FF0045527C /* Debug */,
+				C224C5D72BD007FF0045527C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C224C5D82BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C224C5D92BD007FF0045527C /* Debug */,
+				C224C5DA2BD007FF0045527C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C224C5A02BD007FC0045527C /* Project object */;
+}
