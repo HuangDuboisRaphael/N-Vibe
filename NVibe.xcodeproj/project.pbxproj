@@ -9,14 +9,18 @@
 /* Begin PBXBuildFile section */
 		C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AB2BD007FC0045527C /* AppDelegate.swift */; };
 		C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AD2BD007FC0045527C /* SceneDelegate.swift */; };
-		C224C5B02BD007FC0045527C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* ViewController.swift */; };
-		C224C5B32BD007FC0045527C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B22BD007FC0045527C /* Base */; };
+		C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* HomeViewController.swift */; };
 		C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B42BD007FF0045527C /* Assets.xcassets */; };
 		C224C5B82BD007FF0045527C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B72BD007FF0045527C /* Base */; };
 		C224C5C32BD007FF0045527C /* NVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5C22BD007FF0045527C /* NVibeTests.swift */; };
 		C224C5CD2BD007FF0045527C /* NVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CC2BD007FF0045527C /* NVibeUITests.swift */; };
 		C224C5CF2BD007FF0045527C /* NVibeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */; };
 		C224C5DD2BD008470045527C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C224C5DC2BD008470045527C /* .swiftlint.yml */; };
+		C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5DF2BD009630045527C /* RootCoordinator.swift */; };
+		C224C5E52BD009C00045527C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E42BD009C00045527C /* Coordinator.swift */; };
+		C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* ParentCoordinator.swift */; };
+		C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E82BD009EA0045527C /* ChildCoordinator.swift */; };
+		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,8 +44,7 @@
 		C224C5A82BD007FC0045527C /* NVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C224C5AB2BD007FC0045527C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C224C5AD2BD007FC0045527C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C224C5AF2BD007FC0045527C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		C224C5B22BD007FC0045527C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C224C5AF2BD007FC0045527C /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		C224C5B42BD007FF0045527C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C224C5B72BD007FF0045527C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C224C5B92BD007FF0045527C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -51,6 +54,11 @@
 		C224C5CC2BD007FF0045527C /* NVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITests.swift; sourceTree = "<group>"; };
 		C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C224C5DC2BD008470045527C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
+		C224C5DF2BD009630045527C /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
+		C224C5E42BD009C00045527C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C224C5E62BD009D20045527C /* ParentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinator.swift; sourceTree = "<group>"; };
+		C224C5E82BD009EA0045527C /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
+		C224C5ED2BD00A960045527C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,12 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				C224C5DC2BD008470045527C /* .swiftlint.yml */,
-				C224C5AB2BD007FC0045527C /* AppDelegate.swift */,
-				C224C5AD2BD007FC0045527C /* SceneDelegate.swift */,
-				C224C5AF2BD007FC0045527C /* ViewController.swift */,
-				C224C5B12BD007FC0045527C /* Main.storyboard */,
-				C224C5B42BD007FF0045527C /* Assets.xcassets */,
-				C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */,
+				C224C5DE2BD009510045527C /* App */,
+				C224C5EB2BD00A7D0045527C /* Scenes */,
+				C224C5EA2BD00A680045527C /* Resources */,
 				C224C5B92BD007FF0045527C /* Info.plist */,
 			);
 			path = NVibe;
@@ -128,6 +133,69 @@
 				C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */,
 			);
 			path = NVibeUITests;
+			sourceTree = "<group>";
+		};
+		C224C5DE2BD009510045527C /* App */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5E12BD0097C0045527C /* Core */,
+				C224C5E22BD009810045527C /* Protocols */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		C224C5E12BD0097C0045527C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5AB2BD007FC0045527C /* AppDelegate.swift */,
+				C224C5AD2BD007FC0045527C /* SceneDelegate.swift */,
+				C224C5DF2BD009630045527C /* RootCoordinator.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C224C5E22BD009810045527C /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5E32BD009B20045527C /* Coordinator */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C224C5E32BD009B20045527C /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5E42BD009C00045527C /* Coordinator.swift */,
+				C224C5E62BD009D20045527C /* ParentCoordinator.swift */,
+				C224C5E82BD009EA0045527C /* ChildCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C224C5EA2BD00A680045527C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5B42BD007FF0045527C /* Assets.xcassets */,
+				C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C224C5EB2BD00A7D0045527C /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5EC2BD00A8B0045527C /* Home */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		C224C5EC2BD00A8B0045527C /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				C224C5ED2BD00A960045527C /* HomeCoordinator.swift */,
+				C224C5AF2BD007FC0045527C /* HomeViewController.swift */,
+			);
+			path = Home;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -238,7 +306,6 @@
 				C224C5DD2BD008470045527C /* .swiftlint.yml in Resources */,
 				C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */,
 				C224C5B82BD007FF0045527C /* Base in Resources */,
-				C224C5B32BD007FC0045527C /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -285,9 +352,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C224C5B02BD007FC0045527C /* ViewController.swift in Sources */,
+				C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */,
+				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
+				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,
+				C224C5E52BD009C00045527C /* Coordinator.swift in Sources */,
 				C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */,
+				C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */,
 				C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */,
+				C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -324,14 +396,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		C224C5B12BD007FC0045527C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C224C5B22BD007FC0045527C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -474,7 +538,6 @@
 				INFOPLIST_FILE = NVibe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
@@ -507,7 +570,6 @@
 				INFOPLIST_FILE = NVibe/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
