@@ -7,22 +7,38 @@
 
 import UIKit
 
-final class HomeCoordinator: ParentCoordinator {
-    var navigationController: UINavigationController
-    var childCoordinators = [Coordinator]()
+protocol HomeCoordinatorFlowDelegate: AnyObject {
+    func displaySearchLocationView()
+}
+
+final class HomeCoordinator: BaseCoordinator {
+    private let window: UIWindow
+    private let navigationController = UINavigationController()
     
-    init(navigationController: UINavigationController) {
-        self.navigationController = navigationController
+    init(window: UIWindow) {
+        self.window = window
     }
     
     private lazy var homeViewController: HomeViewController = {
-        let viewController = HomeViewController()
-        viewController.homeCoordinator = self
+        let viewModel: HomeViewModelRepresentable = HomeViewModel(flowDelegate: self)
+        let viewController = HomeViewController(viewModel: viewModel)
         return viewController
     }()
     
-    func start() {
-        add(self)
-        pushViewController(homeViewController, animated: true)
+    override func start() {
+        window.rootViewController = navigationController
+        window.makeKeyAndVisible()
+        navigationController.pushViewController(homeViewController, animated: true)
+    }
+}
+
+extension HomeCoordinator: HomeCoordinatorFlowDelegate {
+    func displaySearchLocationView() {
+        let coordinator = SearchLocationCoordinator(navigationController: navigationController, parentViewController: homeViewController)
+        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+            remove(coordinator: coordinator)
+        }
+        add(coordinator: coordinator)
+        coordinator.start()
     }
 }

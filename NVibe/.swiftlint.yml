@@ -1,6 +1,7 @@
 disabled_rules:
     - trailing_whitespace
+    - weak_delegate
 line_length:
-    warning: 185
+    warning: 200
     ignores_comments: true
     ignores_urls: true

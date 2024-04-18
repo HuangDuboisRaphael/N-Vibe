@@ -18,21 +18,26 @@
 		C224C5DD2BD008470045527C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C224C5DC2BD008470045527C /* .swiftlint.yml */; };
 		C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5DF2BD009630045527C /* RootCoordinator.swift */; };
 		C224C5E52BD009C00045527C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E42BD009C00045527C /* Coordinator.swift */; };
-		C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* ParentCoordinator.swift */; };
-		C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E82BD009EA0045527C /* ChildCoordinator.swift */; };
+		C224C5E72BD009D20045527C /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* BaseCoordinator.swift */; };
+		C224C5E92BD009EA0045527C /* CoordinatorFinishOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E82BD009EA0045527C /* CoordinatorFinishOutput.swift */; };
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
 		C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5162BD02613007529A6 /* HTTPMethod.swift */; };
-		C2B8D51A2BD02662007529A6 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5192BD02662007529A6 /* HomeService.swift */; };
-		C2B8D51C2BD02673007529A6 /* HomeServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D51B2BD02673007529A6 /* HomeServiceProvider.swift */; };
+		C2B8D51A2BD02662007529A6 /* HomeNetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5192BD02662007529A6 /* HomeNetworkService.swift */; };
+		C2B8D51C2BD02673007529A6 /* HomeNetworkServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D51B2BD02673007529A6 /* HomeNetworkServiceProvider.swift */; };
 		C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5202BD02AE2007529A6 /* Configuration.swift */; };
 		C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5232BD059D9007529A6 /* Direction.swift */; };
 		C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5252BD05A14007529A6 /* Waypoint.swift */; };
 		C2B8D5282BD05A65007529A6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5272BD05A65007529A6 /* Route.swift */; };
 		C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D52A2BD07476007529A6 /* LocationManager.swift */; };
-		C2B8D52E2BD08C94007529A6 /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = C2B8D52D2BD08C94007529A6 /* MapboxNavigation */; };
+		C2B9183D2BD162A9004F909B /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = C2B9183C2BD162A9004F909B /* MapboxNavigation */; };
+		C2B918412BD1660E004F909B /* HomeDirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B918402BD1660E004F909B /* HomeDirectionService.swift */; };
+		C2B918442BD16943004F909B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B918432BD16943004F909B /* HomeViewModel.swift */; };
+		C2E894182BD1A69B008B7472 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E894172BD1A69B008B7472 /* SearchLocationViewController.swift */; };
+		C2E8941B2BD1A6B4008B7472 /* SearchLocationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E8941A2BD1A6B4008B7472 /* SearchLocationCoordinator.swift */; };
+		C2E8941F2BD1CADE008B7472 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E8941E2BD1CADE008B7472 /* SearchLocationViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,21 +73,26 @@
 		C224C5DC2BD008470045527C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C224C5DF2BD009630045527C /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		C224C5E42BD009C00045527C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		C224C5E62BD009D20045527C /* ParentCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentCoordinator.swift; sourceTree = "<group>"; };
-		C224C5E82BD009EA0045527C /* ChildCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCoordinator.swift; sourceTree = "<group>"; };
+		C224C5E62BD009D20045527C /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
+		C224C5E82BD009EA0045527C /* CoordinatorFinishOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorFinishOutput.swift; sourceTree = "<group>"; };
 		C224C5ED2BD00A960045527C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandler.swift; sourceTree = "<group>"; };
 		C2B8D5162BD02613007529A6 /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
-		C2B8D5192BD02662007529A6 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
-		C2B8D51B2BD02673007529A6 /* HomeServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeServiceProvider.swift; sourceTree = "<group>"; };
+		C2B8D5192BD02662007529A6 /* HomeNetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkService.swift; sourceTree = "<group>"; };
+		C2B8D51B2BD02673007529A6 /* HomeNetworkServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeNetworkServiceProvider.swift; sourceTree = "<group>"; };
 		C2B8D51F2BD02A13007529A6 /* ConfigFile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigFile.xcconfig; sourceTree = "<group>"; };
 		C2B8D5202BD02AE2007529A6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C2B8D5232BD059D9007529A6 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
 		C2B8D5252BD05A14007529A6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
 		C2B8D5272BD05A65007529A6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		C2B8D52A2BD07476007529A6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		C2B918402BD1660E004F909B /* HomeDirectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDirectionService.swift; sourceTree = "<group>"; };
+		C2B918432BD16943004F909B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		C2E894172BD1A69B008B7472 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		C2E8941A2BD1A6B4008B7472 /* SearchLocationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationCoordinator.swift; sourceTree = "<group>"; };
+		C2E8941E2BD1CADE008B7472 /* SearchLocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchLocationViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +100,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C2B8D52E2BD08C94007529A6 /* MapboxNavigation in Frameworks */,
+				C2B9183D2BD162A9004F909B /* MapboxNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,8 +204,8 @@
 			isa = PBXGroup;
 			children = (
 				C224C5E42BD009C00045527C /* Coordinator.swift */,
-				C224C5E62BD009D20045527C /* ParentCoordinator.swift */,
-				C224C5E82BD009EA0045527C /* ChildCoordinator.swift */,
+				C224C5E62BD009D20045527C /* BaseCoordinator.swift */,
+				C224C5E82BD009EA0045527C /* CoordinatorFinishOutput.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -213,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				C224C5EC2BD00A8B0045527C /* Home */,
+				C2E894142BD1A625008B7472 /* SearchLocation */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -221,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				C224C5ED2BD00A960045527C /* HomeCoordinator.swift */,
+				C2B918432BD16943004F909B /* HomeViewModel.swift */,
 				C224C5AF2BD007FC0045527C /* HomeViewController.swift */,
 			);
 			path = Home;
@@ -250,8 +262,9 @@
 		C2B8D5182BD02651007529A6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				C2B8D5192BD02662007529A6 /* HomeService.swift */,
-				C2B8D51B2BD02673007529A6 /* HomeServiceProvider.swift */,
+				C2B918402BD1660E004F909B /* HomeDirectionService.swift */,
+				C2B8D5192BD02662007529A6 /* HomeNetworkService.swift */,
+				C2B8D51B2BD02673007529A6 /* HomeNetworkServiceProvider.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -283,6 +296,16 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		C2E894142BD1A625008B7472 /* SearchLocation */ = {
+			isa = PBXGroup;
+			children = (
+				C2E8941A2BD1A6B4008B7472 /* SearchLocationCoordinator.swift */,
+				C2E8941E2BD1CADE008B7472 /* SearchLocationViewModel.swift */,
+				C2E894172BD1A69B008B7472 /* SearchLocationViewController.swift */,
+			);
+			path = SearchLocation;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -301,7 +324,7 @@
 			);
 			name = NVibe;
 			packageProductDependencies = (
-				C2B8D52D2BD08C94007529A6 /* MapboxNavigation */,
+				C2B9183C2BD162A9004F909B /* MapboxNavigation */,
 			);
 			productName = NVibe;
 			productReference = C224C5A82BD007FC0045527C /* NVibe.app */;
@@ -376,7 +399,7 @@
 			);
 			mainGroup = C224C59F2BD007FC0045527C;
 			packageReferences = (
-				C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
+				C2B9183B2BD162A9004F909B /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
 			);
 			productRefGroup = C224C5A92BD007FC0045527C /* Products */;
 			projectDirPath = "";
@@ -443,25 +466,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C224C5E72BD009D20045527C /* ParentCoordinator.swift in Sources */,
-				C2B8D51C2BD02673007529A6 /* HomeServiceProvider.swift in Sources */,
+				C224C5E72BD009D20045527C /* BaseCoordinator.swift in Sources */,
+				C2B8D51C2BD02673007529A6 /* HomeNetworkServiceProvider.swift in Sources */,
 				C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */,
 				C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */,
 				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
+				C2B918442BD16943004F909B /* HomeViewModel.swift in Sources */,
 				C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */,
 				C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */,
 				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,
+				C2E894182BD1A69B008B7472 /* SearchLocationViewController.swift in Sources */,
+				C2B918412BD1660E004F909B /* HomeDirectionService.swift in Sources */,
 				C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */,
 				C224C5E52BD009C00045527C /* Coordinator.swift in Sources */,
+				C2E8941F2BD1CADE008B7472 /* SearchLocationViewModel.swift in Sources */,
 				C2B8D5282BD05A65007529A6 /* Route.swift in Sources */,
 				C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */,
 				C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */,
-				C2B8D51A2BD02662007529A6 /* HomeService.swift in Sources */,
+				C2B8D51A2BD02662007529A6 /* HomeNetworkService.swift in Sources */,
 				C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */,
 				C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */,
+				C2E8941B2BD1A6B4008B7472 /* SearchLocationCoordinator.swift in Sources */,
 				C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */,
 				C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */,
-				C224C5E92BD009EA0045527C /* ChildCoordinator.swift in Sources */,
+				C224C5E92BD009EA0045527C /* CoordinatorFinishOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -816,20 +844,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
+		C2B9183B2BD162A9004F909B /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.18.0;
+				minimumVersion = 2.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C2B8D52D2BD08C94007529A6 /* MapboxNavigation */ = {
+		C2B9183C2BD162A9004F909B /* MapboxNavigation */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = C2B8D52C2BD08C94007529A6 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			package = C2B9183B2BD162A9004F909B /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
 			productName = MapboxNavigation;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -10,7 +10,7 @@ import CoreLocation
 
 final class LocationManager: NSObject {
     
-    var coordinatesPublisher = PassthroughSubject<CLLocationCoordinate2D, Error>()
+    var currentLocation = CLLocation()
     var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()
     
     static let shared = LocationManager()
@@ -53,10 +53,10 @@ extension LocationManager: CLLocationManagerDelegate {
         
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
-        coordinatesPublisher.send(location.coordinate)
+        currentLocation = location
     }
     
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        coordinatesPublisher.send(completion: .failure(error))
-    }
+//    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+//        coordinatesPublisher.send(completion: .failure(error))
+//    }
 }

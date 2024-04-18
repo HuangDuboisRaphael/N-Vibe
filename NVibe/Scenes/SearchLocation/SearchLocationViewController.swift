@@ -1,20 +1,14 @@
 //
-//  HomeViewController.swift
+//  SearchLocationViewController.swift
 //  NVibe
 //
-//  Created by Raphaël Huang-Dubois on 17/04/2024.
+//  Created by Raphaël Huang-Dubois on 18/04/2024.
 //
 
 import UIKit
-import MapboxNavigation
 
-final class HomeViewController: UIViewController {    
-    private let viewModel: HomeViewModelRepresentable
-    
-    private lazy var navigationMapView: NavigationMapView = {
-        let view = NavigationMapView(frame: view.bounds)
-        return view
-    }()
+class SearchLocationViewController: UIViewController {
+    private let viewModel: SearchLocationViewModelRepresentable
     
     private lazy var searchButton: UIButton = {
         let view = UIButton()
@@ -41,16 +35,16 @@ final class HomeViewController: UIViewController {
         
         return view
     }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = .red
+        navigationItem.setHidesBackButton(true, animated: true)
+        addLayouts()
+        makeConstraints()
+    }
     
-    private lazy var searchBar: UISearchBar = {
-        let view = UISearchBar()
-        view.searchBarStyle = .prominent
-//        view.searchTextField.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
- 
-    init(viewModel: HomeViewModelRepresentable) {
+    init(viewModel: SearchLocationViewModelRepresentable) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,22 +54,8 @@ final class HomeViewController: UIViewController {
     }
 }
 
-/// UIViewController life cycle methods.
-extension HomeViewController {
-    override func loadView() {
-        super.loadView()
-        addLayouts()
-        makeConstraints()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-}
-
-private extension HomeViewController {
+private extension SearchLocationViewController {
     func addLayouts() {
-        view.addSubview(navigationMapView)
         view.addSubview(searchButton)
     }
     
@@ -90,12 +70,12 @@ private extension HomeViewController {
 }
 
 @objc
-private extension HomeViewController {
+private extension SearchLocationViewController {
     func searchButtonDidTap() {
-        viewModel.displaySearchLocationView()
+        viewModel.closeView()
     }
 }
 
 private extension Selector {
-    static let searchButtonDidTapAction = #selector(HomeViewController.searchButtonDidTap)
+    static let searchButtonDidTapAction = #selector(SearchLocationViewController.searchButtonDidTap)
 }

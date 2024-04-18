@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Waypoint: Codable {
+struct WaypointResponse: Codable {
     let name: String
     let location: [Double]
     let distance: Double?

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Route: Codable {
+struct RouteResponseAPI: Codable {
     let duration: Double
     let distance: Double
     let geometry: String

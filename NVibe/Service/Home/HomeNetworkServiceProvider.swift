@@ -1,5 +1,5 @@
 //
-//  HomeServiceProvider.swift
+//  HomeNetworkServiceProvider.swift
 //  NVibe
 //
 //  Created by Raphaël Huang-Dubois on 17/04/2024.
@@ -8,11 +8,11 @@
 import Foundation
 import Combine
 
-enum HomeServiceProvider {
+enum HomeNetworkServiceProvider {
     case retrieveDirectionsForWalking
 }
 
-extension HomeServiceProvider {
+extension HomeNetworkServiceProvider {
     func buildRequest() -> AnyPublisher<URLRequest, APIErrorHandler> {
         switch self {
         case .retrieveDirectionsForWalking:
