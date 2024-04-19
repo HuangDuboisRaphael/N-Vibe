@@ -7,14 +7,15 @@
 
 import Foundation
 
-class BaseCoordinator: NSObject, Coordinator, CoordinatorFinishOutput {
-    var finishFlow: (() -> Void)?
-    var childCoordinators = [Coordinator]()
-
-    func start() {
-        fatalError("Children should implement `start`.")
-    }
+protocol BaseCoordinator: Coordinator {
+    var childCoordinators: [Coordinator] { get set }
+    var finishFlow: (() -> Void)? { get set }
     
+    func add(coordinator: Coordinator)
+    func remove(coordinator: Coordinator?)
+}
+
+extension BaseCoordinator {
     func add(coordinator: Coordinator) {
         if childCoordinators.contains(where: { element in
             coordinator === element

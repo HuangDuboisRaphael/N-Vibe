@@ -8,16 +8,15 @@
 import UIKit
 
 /// Root coordinator to use in AppDelegate, after delegating the navigation to the HomeCoordinator.
-final class RootCoordinator: BaseCoordinator {
+final class RootCoordinator: Coordinator {
     let window: UIWindow
     
     init(window: UIWindow) {
         self.window = window
     }
     
-    override func start() {
+    func start() {
         let coordinator = HomeCoordinator(window: window)
-        add(coordinator: coordinator)
         coordinator.start()
     }
 }

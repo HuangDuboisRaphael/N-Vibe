@@ -12,6 +12,9 @@ protocol HomeCoordinatorFlowDelegate: AnyObject {
 }
 
 final class HomeCoordinator: BaseCoordinator {
+    var childCoordinators = [Coordinator]()
+    var finishFlow: (() -> Void)?
+    
     private let window: UIWindow
     private let navigationController = UINavigationController()
     
@@ -25,7 +28,7 @@ final class HomeCoordinator: BaseCoordinator {
         return viewController
     }()
     
-    override func start() {
+    func start() {
         window.rootViewController = navigationController
         window.makeKeyAndVisible()
         navigationController.pushViewController(homeViewController, animated: true)
@@ -35,7 +38,7 @@ final class HomeCoordinator: BaseCoordinator {
 extension HomeCoordinator: HomeCoordinatorFlowDelegate {
     func displaySearchLocationView() {
         let coordinator = SearchLocationCoordinator(navigationController: navigationController, parentViewController: homeViewController)
-        coordinator.finishFlow = { [unowned self, unowned coordinator] in
+        coordinator.finishFlow = { [self, unowned coordinator] in
             remove(coordinator: coordinator)
         }
         add(coordinator: coordinator)

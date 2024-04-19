@@ -7,9 +7,11 @@
 
 import UIKit
 import MapboxNavigation
+import MapboxMaps
 
-final class HomeViewController: UIViewController {    
-    private let viewModel: HomeViewModelRepresentable
+final class HomeViewController: UIViewController {
+    let viewModel: HomeViewModelRepresentable
+    var beginAnnotation: PointAnnotation?
     
     private lazy var navigationMapView: NavigationMapView = {
         let view = NavigationMapView(frame: view.bounds)
@@ -41,14 +43,6 @@ final class HomeViewController: UIViewController {
         
         return view
     }()
-    
-    private lazy var searchBar: UISearchBar = {
-        let view = UISearchBar()
-        view.searchBarStyle = .prominent
-//        view.searchTextField.backgroundColor = .white
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
-    }()
  
     init(viewModel: HomeViewModelRepresentable) {
         self.viewModel = viewModel
@@ -66,6 +60,11 @@ extension HomeViewController {
         super.loadView()
         addLayouts()
         makeConstraints()
+        setupBindings()
+        navigationMapView.mapView.mapboxMap.onNext(event: .mapLoaded) { [weak self] _ in
+            guard let self = self else { return }
+            self.navigationMapView.pointAnnotationManager?.delegate = self
+        }
     }
     
     override func viewDidLoad() {
@@ -73,7 +72,7 @@ extension HomeViewController {
     }
 }
 
-private extension HomeViewController {
+extension HomeViewController: AnnotationInteractionDelegate {
     func addLayouts() {
         view.addSubview(navigationMapView)
         view.addSubview(searchButton)
@@ -86,6 +85,46 @@ private extension HomeViewController {
             searchButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             searchButton.heightAnchor.constraint(equalToConstant: 48)
         ])
+    }
+    
+    func setupBindings() {
+        viewModel.didCalculateRoute = { [unowned self] in
+            self.drawRoute()
+            
+            if var annotation = navigationMapView.pointAnnotationManager?.annotations.first {
+                // Display callout view on destination annotation
+                annotation.textField = "Start navigation"
+                annotation.textColor = .init(UIColor.white)
+                annotation.textHaloColor = .init(UIColor.systemBlue)
+                annotation.textHaloWidth = 2
+                annotation.textAnchor = .top
+                annotation.textRadialOffset = 1.0
+                
+                beginAnnotation = annotation
+                navigationMapView.pointAnnotationManager?.annotations = [annotation]
+            }
+  
+        }
+    }
+    
+    func drawRoute() {
+        guard let route = viewModel.route else { return }
+        navigationMapView.show([route])
+        navigationMapView.showRouteDurations(along: [route])
+        
+        // Show destination waypoint on the map
+        navigationMapView.showWaypoints(on: route)
+    }
+
+    // Present the navigation view controller when the annotation is selected
+    func annotationManager(_ manager: AnnotationManager, didDetectTappedAnnotations annotations: [Annotation]) {
+        guard annotations.first?.id == beginAnnotation?.id,
+              let routeResponse = viewModel.routeResponse else {
+            return
+        }
+        let navigationViewController = NavigationViewController(for: routeResponse, routeIndex: 0, routeOptions: viewModel.routeOptions)
+        navigationViewController.modalPresentationStyle = .fullScreen
+        self.present(navigationViewController, animated: true, completion: nil)
     }
 }
 

@@ -12,11 +12,12 @@ protocol SearchLocationCoordinatorFlowDelegate: AnyObject {
 }
 
 final class SearchLocationCoordinator: BaseCoordinator {
-    private var navigationController: UINavigationController
-    private var parentViewController: UIViewController
+    var childCoordinators = [Coordinator]()
+    var finishFlow: (() -> Void)?
     
-    init(navigationController: UINavigationController, parentViewController: UIViewController) {
-        self.navigationController = navigationController
+    private var parentViewController: HomeViewController
+    
+    init(navigationController: UINavigationController, parentViewController: HomeViewController) {
         self.parentViewController = parentViewController
     }
     
@@ -26,14 +27,19 @@ final class SearchLocationCoordinator: BaseCoordinator {
         return viewController
     }()
         
-    override func start() {
-        navigationController.pushViewController(searchLocationViewController, animated: true)
+    func start() {
+        parentViewController.modalPresentationStyle = .fullScreen
+        parentViewController.present(searchLocationViewController, animated: true)
     }
 }
 
 extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
     func closeView() {
-        navigationController.popViewController(animated: true)
-        finishFlow?()
+        parentViewController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.destination
+            self.parentViewController.viewModel.calculateRoute()
+            finishFlow?()
+        }
     }
 }
