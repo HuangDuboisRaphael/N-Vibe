@@ -9,6 +9,5 @@ import Foundation
 
 struct Direction: Codable {
     let code: String
-    let waypoints: [WaypointResponse]
     let routes: [RouteResponseAPI]
 }

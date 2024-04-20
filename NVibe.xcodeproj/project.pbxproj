@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C2024BFE2BD41656005793A4 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024BFD2BD41656005793A4 /* Double+Extensions.swift */; };
+		C2024C012BD41BD9005793A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024C002BD41BD9005793A4 /* Constants.swift */; };
+		C2024C042BD41DBA005793A4 /* LineString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024C032BD41DBA005793A4 /* LineString.swift */; };
 		C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AB2BD007FC0045527C /* AppDelegate.swift */; };
 		C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AD2BD007FC0045527C /* SceneDelegate.swift */; };
 		C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* HomeViewController.swift */; };
@@ -21,6 +24,8 @@
 		C224C5E72BD009D20045527C /* BaseCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E62BD009D20045527C /* BaseCoordinator.swift */; };
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
 		C265FD1A2BD2999700741E94 /* LoadableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD192BD2999700741E94 /* LoadableObject.swift */; };
+		C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */; };
+		C265FD1F2BD3441E00741E94 /* MapboxNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
@@ -29,8 +34,7 @@
 		C2B8D51C2BD02673007529A6 /* HomeNetworkServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D51B2BD02673007529A6 /* HomeNetworkServiceProvider.swift */; };
 		C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5202BD02AE2007529A6 /* Configuration.swift */; };
 		C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5232BD059D9007529A6 /* Direction.swift */; };
-		C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5252BD05A14007529A6 /* Waypoint.swift */; };
-		C2B8D5282BD05A65007529A6 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5272BD05A65007529A6 /* Route.swift */; };
+		C2B8D5282BD05A65007529A6 /* RouteResponseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5272BD05A65007529A6 /* RouteResponseAPI.swift */; };
 		C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D52A2BD07476007529A6 /* LocationManager.swift */; };
 		C2B9183D2BD162A9004F909B /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = C2B9183C2BD162A9004F909B /* MapboxNavigation */; };
 		C2B918412BD1660E004F909B /* HomeDirectionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B918402BD1660E004F909B /* HomeDirectionService.swift */; };
@@ -58,6 +62,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C2024BFD2BD41656005793A4 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		C2024C002BD41BD9005793A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		C2024C032BD41DBA005793A4 /* LineString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineString.swift; sourceTree = "<group>"; };
 		C224C5A82BD007FC0045527C /* NVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C224C5AB2BD007FC0045527C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C224C5AD2BD007FC0045527C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +83,8 @@
 		C224C5E62BD009D20045527C /* BaseCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCoordinator.swift; sourceTree = "<group>"; };
 		C224C5ED2BD00A960045527C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C265FD192BD2999700741E94 /* LoadableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableObject.swift; sourceTree = "<group>"; };
+		C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionButton.swift; sourceTree = "<group>"; };
+		C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxNavigationCoordinator.swift; sourceTree = "<group>"; };
 		C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandler.swift; sourceTree = "<group>"; };
@@ -85,8 +94,7 @@
 		C2B8D51F2BD02A13007529A6 /* ConfigFile.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = ConfigFile.xcconfig; sourceTree = "<group>"; };
 		C2B8D5202BD02AE2007529A6 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		C2B8D5232BD059D9007529A6 /* Direction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Direction.swift; sourceTree = "<group>"; };
-		C2B8D5252BD05A14007529A6 /* Waypoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waypoint.swift; sourceTree = "<group>"; };
-		C2B8D5272BD05A65007529A6 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
+		C2B8D5272BD05A65007529A6 /* RouteResponseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResponseAPI.swift; sourceTree = "<group>"; };
 		C2B8D52A2BD07476007529A6 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		C2B918402BD1660E004F909B /* HomeDirectionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeDirectionService.swift; sourceTree = "<group>"; };
 		C2B918432BD16943004F909B /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +129,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C2024BFC2BD41643005793A4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C2024BFD2BD41656005793A4 /* Double+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		C2024BFF2BD41BCC005793A4 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C2024C002BD41BD9005793A4 /* Constants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		C2024C022BD41D9D005793A4 /* API Response */ = {
+			isa = PBXGroup;
+			children = (
+				C2B8D5232BD059D9007529A6 /* Direction.swift */,
+				C2B8D5272BD05A65007529A6 /* RouteResponseAPI.swift */,
+				C2024C032BD41DBA005793A4 /* LineString.swift */,
+			);
+			path = "API Response";
+			sourceTree = "<group>";
+		};
 		C224C59F2BD007FC0045527C = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				C224C5DC2BD008470045527C /* .swiftlint.yml */,
+				C2024BFC2BD41643005793A4 /* Extensions */,
 				C224C5DE2BD009510045527C /* App */,
 				C2B8D51E2BD029EA007529A6 /* Configuration */,
 				C2B8D5222BD04E2A007529A6 /* Model */,
@@ -176,6 +211,7 @@
 		C224C5DE2BD009510045527C /* App */ = {
 			isa = PBXGroup;
 			children = (
+				C2024BFF2BD41BCC005793A4 /* Constants */,
 				C224C5E12BD0097C0045527C /* Core */,
 				C224C5E22BD009810045527C /* Protocols */,
 			);
@@ -224,6 +260,7 @@
 			children = (
 				C224C5EC2BD00A8B0045527C /* Home */,
 				C2E894142BD1A625008B7472 /* SearchLocation */,
+				C265FD1D2BD343E800741E94 /* Mapbox Navigation */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -234,6 +271,7 @@
 				C224C5ED2BD00A960045527C /* HomeCoordinator.swift */,
 				C2B918432BD16943004F909B /* HomeViewModel.swift */,
 				C224C5AF2BD007FC0045527C /* HomeViewController.swift */,
+				C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -244,6 +282,14 @@
 				C265FD192BD2999700741E94 /* LoadableObject.swift */,
 			);
 			path = "Loading State";
+			sourceTree = "<group>";
+		};
+		C265FD1D2BD343E800741E94 /* Mapbox Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */,
+			);
+			path = "Mapbox Navigation";
 			sourceTree = "<group>";
 		};
 		C2B8D50D2BD0257E007529A6 /* Service */ = {
@@ -289,9 +335,7 @@
 		C2B8D5222BD04E2A007529A6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				C2B8D5232BD059D9007529A6 /* Direction.swift */,
-				C2B8D5252BD05A14007529A6 /* Waypoint.swift */,
-				C2B8D5272BD05A65007529A6 /* Route.swift */,
+				C2024C022BD41D9D005793A4 /* API Response */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -477,22 +521,26 @@
 				C224C5E72BD009D20045527C /* BaseCoordinator.swift in Sources */,
 				C2B8D51C2BD02673007529A6 /* HomeNetworkServiceProvider.swift in Sources */,
 				C265FD1A2BD2999700741E94 /* LoadableObject.swift in Sources */,
-				C2B8D5262BD05A14007529A6 /* Waypoint.swift in Sources */,
+				C2024BFE2BD41656005793A4 /* Double+Extensions.swift in Sources */,
+				C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */,
 				C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */,
 				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
 				C2B918442BD16943004F909B /* HomeViewModel.swift in Sources */,
 				C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */,
 				C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */,
+				C2024C012BD41BD9005793A4 /* Constants.swift in Sources */,
 				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,
 				C2E894182BD1A69B008B7472 /* SearchLocationViewController.swift in Sources */,
 				C2B918412BD1660E004F909B /* HomeDirectionService.swift in Sources */,
+				C265FD1F2BD3441E00741E94 /* MapboxNavigationCoordinator.swift in Sources */,
 				C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */,
 				C224C5E52BD009C00045527C /* Coordinator.swift in Sources */,
 				C2E8941F2BD1CADE008B7472 /* SearchLocationViewModel.swift in Sources */,
-				C2B8D5282BD05A65007529A6 /* Route.swift in Sources */,
+				C2B8D5282BD05A65007529A6 /* RouteResponseAPI.swift in Sources */,
 				C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */,
 				C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */,
 				C2B8D51A2BD02662007529A6 /* HomeNetworkService.swift in Sources */,
+				C2024C042BD41DBA005793A4 /* LineString.swift in Sources */,
 				C2B8D5242BD059D9007529A6 /* Direction.swift in Sources */,
 				C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */,
 				C2E8941B2BD1A6B4008B7472 /* SearchLocationCoordinator.swift in Sources */,

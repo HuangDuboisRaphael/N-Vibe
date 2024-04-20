@@ -38,7 +38,7 @@ extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
         parentViewController.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.destination
-            self.parentViewController.viewModel.calculateRoute()
+            self.parentViewController.viewModel.didSelectDestination?()
             finishFlow?()
         }
     }

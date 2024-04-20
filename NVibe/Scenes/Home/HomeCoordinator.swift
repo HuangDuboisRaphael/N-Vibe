@@ -9,6 +9,7 @@ import UIKit
 
 protocol HomeCoordinatorFlowDelegate: AnyObject {
     func displaySearchLocationView()
+    func displayMapboxNavigation()
 }
 
 final class HomeCoordinator: BaseCoordinator {
@@ -38,6 +39,15 @@ final class HomeCoordinator: BaseCoordinator {
 extension HomeCoordinator: HomeCoordinatorFlowDelegate {
     func displaySearchLocationView() {
         let coordinator = SearchLocationCoordinator(navigationController: navigationController, parentViewController: homeViewController)
+        coordinator.finishFlow = { [self, unowned coordinator] in
+            remove(coordinator: coordinator)
+        }
+        add(coordinator: coordinator)
+        coordinator.start()
+    }
+    
+    func displayMapboxNavigation() {
+        let coordinator = MapboxNavigationCoordinator(parentViewController: homeViewController)
         coordinator.finishFlow = { [self, unowned coordinator] in
             remove(coordinator: coordinator)
         }

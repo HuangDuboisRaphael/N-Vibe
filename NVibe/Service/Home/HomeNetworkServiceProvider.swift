@@ -13,15 +13,15 @@ enum HomeNetworkServiceProvider {
 }
 
 extension HomeNetworkServiceProvider {
-    func buildRequest() -> AnyPublisher<URLRequest, APIErrorHandler> {
+    func buildRequest(with coordinates: String) -> AnyPublisher<URLRequest, APIErrorHandler> {
         switch self {
         case .retrieveDirectionsForWalking:
             let queryItems: [URLQueryItem] = [
+                URLQueryItem(name: "geometries", value: "geojson"),
                 URLQueryItem(name: "access_token", value: Configuration.apiKey)
             ]
-            let text = "2.33, 48.86;2.26, 48.91"
             return URLRequestBuilder(with: API.baseUrl)
-                .set(path: API.Path.walking + text)
+                .set(path: API.Path.walking + coordinates)
                 .set(queryItems: queryItems)
                 .build()
         }
