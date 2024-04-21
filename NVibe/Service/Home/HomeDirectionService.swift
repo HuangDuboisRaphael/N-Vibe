@@ -6,9 +6,7 @@
 //
 
 import Combine
-import CoreLocation
 import MapboxDirections
-import MapboxCoreNavigation
 
 protocol HomeDirectionServiceInterface {
     func calculateRoute(_ routeOptions: RouteOptions) -> AnyPublisher<RouteResponse, DirectionsError>
@@ -16,6 +14,7 @@ protocol HomeDirectionServiceInterface {
 
 final class HomeDirectionService: HomeDirectionServiceInterface {
     init() {
+        // Call singleton and persit its reference.
         _ = LocationManager.shared
     }
     

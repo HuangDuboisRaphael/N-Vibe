@@ -1,6 +1,7 @@
 disabled_rules:
     - trailing_whitespace
     - weak_delegate
+    - unused_optional_binding
 line_length:
     error: 320
     warning: 300

@@ -8,7 +8,8 @@
 import UIKit
 import MapKit
 
-class SearchLocationViewController: UIViewController {
+final class SearchLocationViewController: UIViewController {
+    // MARK: Properties and UIView.
     let viewModel: SearchLocationViewModelRepresentable
     let isSearchingArrival: Bool
     private var searchCompleter = MKLocalSearchCompleter()
@@ -30,6 +31,7 @@ class SearchLocationViewController: UIViewController {
         return view
     }()
     
+    // MARK: Initialization.
     init(viewModel: SearchLocationViewModelRepresentable, isSearchingArrival: Bool) {
         self.viewModel = viewModel
         self.isSearchingArrival = isSearchingArrival
@@ -41,6 +43,7 @@ class SearchLocationViewController: UIViewController {
     }
 }
 
+// MARK: - ViewController life cycle methods.
 extension SearchLocationViewController {
     override func loadView() {
         super.loadView()
@@ -55,7 +58,7 @@ extension SearchLocationViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // To display the keyboard.
+        // To display the keyboard when view appears.
         searchBar.becomeFirstResponder()
     }
     
@@ -65,6 +68,7 @@ extension SearchLocationViewController {
     }
 }
 
+// MARK: - Private properties.
 private extension SearchLocationViewController {
     func addLayouts() {
         view.backgroundColor = .white
@@ -88,15 +92,14 @@ private extension SearchLocationViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-}
-
-private extension SearchLocationViewController {
+    
     func setUpCell(_ cell: UITableViewCell, for result: MKLocalSearchCompletion) {
         cell.textLabel?.text = result.title
         cell.detailTextLabel?.text = result.subtitle
     }
 }
 
+// MARK: - Delegate and DataSource properties.
 extension SearchLocationViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchCompleter.queryFragment = searchText

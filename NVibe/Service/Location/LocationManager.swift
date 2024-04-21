@@ -8,8 +8,8 @@
 import Combine
 import CoreLocation
 
+/// Singleton class to ask location permission and store the user's current location.
 final class LocationManager: NSObject {
-    
     var currentLocation = CLLocation()
     var coordinatePublisher = PassthroughSubject<Void, Error>()
     var deniedLocationAccessPublisher = PassthroughSubject<Void, Never>()

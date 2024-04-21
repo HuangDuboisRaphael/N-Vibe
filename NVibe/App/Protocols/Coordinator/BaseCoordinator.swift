@@ -7,6 +7,7 @@
 
 import Foundation
 
+/// Protocol to be used by all coordinators other than root including child coordinators stack management and finishFlow closure.
 protocol BaseCoordinator: Coordinator {
     var childCoordinators: [Coordinator] { get set }
     var finishFlow: (() -> Void)? { get set }

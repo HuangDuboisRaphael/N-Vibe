@@ -15,6 +15,7 @@ protocol HomeCoordinatorFlowDelegate: AnyObject {
     func displayMapboxNavigation()
 }
 
+/// Handle all navigation methods for HomeViewController and instantiate children coordinators.
 final class HomeCoordinator: BaseCoordinator {
     var childCoordinators = [Coordinator]()
     var finishFlow: (() -> Void)?

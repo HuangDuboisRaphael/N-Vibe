@@ -37,7 +37,7 @@ final class HomeViewController: UIViewController {
         navigationMapView.mapView.annotations.makePolylineAnnotationManager(id: Constants.AnnotationManager.polylineIdentifier)
     }
     
-    // All UIView components.
+    /// All UIView components.
     private lazy var navigationMapView: NavigationMapView = {
         let view = NavigationMapView(frame: view.bounds)
         view.mapView.ornaments.options.compass.position = .bottomTrailing
@@ -164,8 +164,8 @@ final class HomeViewController: UIViewController {
     }
 }
 
+// MARK: - ViewController life cycle methods.
 extension HomeViewController {
-    // MARK: - ViewController life cycle methods.
     override func loadView() {
         super.loadView()
         addLayouts()
@@ -332,7 +332,7 @@ private extension HomeViewController {
                 } else {
                     self.showErrorBannerView(error: Constants.MessageError.cannotRecoverData)
                 }
-            } else if let error = error as? DirectionsError {
+            } else if let _ = error as? DirectionsError {
                 self.showErrorBannerView(error: Constants.MessageError.cannotStartItinerary)
             } else {
                 self.showErrorBannerView(error: Constants.MessageError.defaultMessageError)
@@ -482,19 +482,19 @@ private extension HomeViewController {
     }
 }
 
-// MARK: Methods related to ErrorBannerView.
+// MARK: Method related to ErrorBannerView.
 private extension HomeViewController {
     func showErrorBannerView(error: String) {
         errorBannerView.setError(error)
         view.addSubview(errorBannerView)
         makeErrorBannerViewConstraints()
         
-        // Animate showing the banner
+        /// Animate showing the banner
         UIView.animate(withDuration: 0.5) {
             self.errorBannerView.frame.origin.y = 0
         }
         
-        // Dismiss the banner after a certain duration
+        /// Dismiss the banner after a certain duration
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
             UIView.animate(withDuration: 0.5) {
                 self.errorBannerView.frame.origin.y = -self.errorBannerView.frame.height

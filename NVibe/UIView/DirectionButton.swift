@@ -36,21 +36,11 @@ final class DirectionButton: UIButton {
         switch style {
         case .itinerary:
             backgroundColor = .white
-            clipsToBounds = true
-            layer.borderWidth = 0.5
-            layer.borderColor = UIColor.black.withAlphaComponent(0.6).cgColor
-            // Set magnifying glass icon
-            let icon = UIImage(systemName: "arrow.uturn.right.square")
-            setImage(icon, for: .normal)
-            tintColor = .black.withAlphaComponent(0.7)
+            setBorder(width: 0.5, color: .black.withAlphaComponent(0.6))
+            setSystemImage(named: "arrow.uturn.right.square", color: .black.withAlphaComponent(0.7))
             adjustsImageWhenHighlighted = false
-            
-            // Set text on the right
-            setTitle("Itinéraire", for: .normal)
-            setTitleColor(.black.withAlphaComponent(0.7), for: .normal)
+            setTitle("Itinéraire", color: .black.withAlphaComponent(0.7))
             titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
-            
-            // Set image and text position
             imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
             contentHorizontalAlignment = .left

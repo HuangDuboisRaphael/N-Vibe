@@ -21,6 +21,7 @@ protocol SearchLocationViewModelRepresentable: AnyObject {
 }
 
 final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
+    /// SearchLocationViewModelRepresentable properties.
     var searchResults: [MKLocalSearchCompletion] = []
     var selectedPlacemarkStart: Placemark?
     var selectedPlacemarkArrival: Placemark?
@@ -32,6 +33,7 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
         self.flowDelegate = flowDelegate
     }
     
+    /// SearchLocationViewModelRepresentable methods.
     func getSingleResult(at indexPath: IndexPath) -> MKLocalSearchCompletion {
         searchResults[indexPath.row]
     }
