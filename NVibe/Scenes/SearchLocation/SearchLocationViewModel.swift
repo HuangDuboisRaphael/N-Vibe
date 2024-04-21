@@ -15,7 +15,9 @@ protocol SearchLocationViewModelRepresentable: AnyObject {
     
     func getSingleResult(at indexPath: IndexPath) -> MKLocalSearchCompletion
     func getPlacemarkInformation(at indexPath: IndexPath, isSearchingArrival: Bool)
-    func closeView()
+    func didSelectedPlacemarkToCloseView()
+    func errorResultingClosingView()
+    func removeCoordinator()
 }
 
 final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
@@ -51,11 +53,19 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
             } else {
                 self.selectedPlacemarkStart = (name: name, coordinate: coordinate)
             }
-            self.flowDelegate.closeView()
+            self.flowDelegate.didSelectedPlacemarkToCloseView()
         }
     }
     
-    func closeView() {
-        flowDelegate.closeView()
+    func didSelectedPlacemarkToCloseView() {
+        flowDelegate.didSelectedPlacemarkToCloseView()
+    }
+    
+    func errorResultingClosingView() {
+        flowDelegate.errorResultingClosingView()
+    }
+    
+    func removeCoordinator() {
+        flowDelegate.removeCoordinator()
     }
 }

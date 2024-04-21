@@ -29,20 +29,6 @@ class SearchLocationViewController: UIViewController {
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        view.backgroundColor = .white
-        navigationItem.setHidesBackButton(true, animated: true)
-        addLayouts()
-        makeConstraints()
-        searchCompleter.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        searchBar.becomeFirstResponder()
-    }
     
     init(viewModel: SearchLocationViewModelRepresentable, isSearchingArrival: Bool) {
         self.viewModel = viewModel
@@ -55,8 +41,34 @@ class SearchLocationViewController: UIViewController {
     }
 }
 
+extension SearchLocationViewController {
+    override func loadView() {
+        super.loadView()
+        addLayouts()
+        makeConstraints()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        searchCompleter.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // To display the keyboard.
+        searchBar.becomeFirstResponder()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        viewModel.removeCoordinator()
+    }
+}
+
 private extension SearchLocationViewController {
     func addLayouts() {
+        view.backgroundColor = .white
+        navigationItem.setHidesBackButton(true, animated: true)
         view.addSubview(searchBar)
         view.addSubview(tableView)
     }
@@ -76,7 +88,9 @@ private extension SearchLocationViewController {
             tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
-    
+}
+
+private extension SearchLocationViewController {
     func setUpCell(_ cell: UITableViewCell, for result: MKLocalSearchCompletion) {
         cell.textLabel?.text = result.title
         cell.detailTextLabel?.text = result.subtitle
@@ -91,13 +105,12 @@ extension SearchLocationViewController: UISearchBarDelegate {
 
 extension SearchLocationViewController: MKLocalSearchCompleterDelegate {
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
-        // Setting our searchResults variable to the results that the searchCompleter returned
         viewModel.searchResults = completer.results
         tableView.reloadData()
     }
     
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: any Error) {
-        print(error)
+        viewModel.errorResultingClosingView()
     }
 }
 
@@ -107,10 +120,8 @@ extension SearchLocationViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Get the specific searchResult at the particular index
         let singleResult = viewModel.getSingleResult(at: indexPath)
         
-        // Create  a new UITableViewCell object
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         setUpCell(cell, for: singleResult)
         return cell

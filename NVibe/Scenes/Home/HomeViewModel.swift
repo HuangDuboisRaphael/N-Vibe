@@ -24,11 +24,13 @@ protocol HomeViewModelRepresentable: LoadableObject {
     var didSelectNewStart: (() -> Void)? { get set }
     var didSelectNewArrival: (() -> Void)? { get set }
     var didCalculateRoute: (() -> Void)? { get set }
+    var didFailLoading: ((Error) -> Void)? { get set }
     var indicationLabelText: String { get }
     var lineCoordinates: [CLLocationCoordinate2D] { get }
     
     func calculateRouteWithApi()
-    func tryDisplayingMapboxNavigation()
+    func displayUserLocationAlert(title: String, message: String)
+    func displayMapboxNavigation()
     func displaySearchLocationView(isSearchingArrival: Bool)
 }
 
@@ -40,6 +42,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
     var didSelectNewStart: (() -> Void)?
     
     var didSelectNewArrival: (() -> Void)?
+    var didFailLoading: ((Error) -> Void)?
     
     private var startWaypoint: Waypoint {
         Waypoint(coordinate: self.selectedPlacemarkStart?.coordinate ?? LocationManager.shared.currentLocation.coordinate, coordinateAccuracy: -1, name: "Start")
@@ -64,7 +67,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
             case .loading:
                 isLoadingBackgroundTasks?()
             case .failed(let error):
-                print(error)
+                didFailLoading?(error)
             case .loaded:
                 cancellables.forEach({ $0.cancel() })
                 didCalculateRoute?()
@@ -110,6 +113,10 @@ final class HomeViewModel: HomeViewModelRepresentable {
     
     func calculateRouteWithApi() {
         loadingState = .loading
+        guard NetworkUtils.isConnectedToInternet() else {
+            self.loadingState = .failed(APIErrorHandler.noConnection)
+            return
+        }
         homeNetworkService.retrieveDirectionsForWalking(with: coordinatesToQuery)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -117,7 +124,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
                 case .finished:
                     break
                 case .failure(let error):
-                    print(error)
+                    self.loadingState = .failed(error)
                 }
             } receiveValue: { response in
                 self.direction = response
@@ -126,21 +133,28 @@ final class HomeViewModel: HomeViewModelRepresentable {
             .store(in: &cancellables)
     }
     
-    func tryDisplayingMapboxNavigation() {
+    func displayUserLocationAlert(title: String, message: String) {
+        flowDelegate.displayUserLocationAlert(title: title, message: message)
+    }
+    
+    func displayMapboxNavigation() {
         loadingState = .loading
-        flowDelegate.navigationViewController?.navigationService.router.finishRouting()
+        guard NetworkUtils.isConnectedToInternet() else {
+            self.loadingState = .failed(APIErrorHandler.noConnection)
+            return
+        }
         homeDirectionService.calculateRoute(routeOptions)
             .sink { completion in
                 switch completion {
                 case .finished:
                     break
                 case .failure(let error):
-                    print(error)
+                    self.loadingState = .failed(error)
                 }
             } receiveValue: { [unowned self] response in
                 self.routeResponse = response
-                flowDelegate.displayMapboxNavigation()
                 self.loadingState = .loaded
+                flowDelegate.displayMapboxNavigation()
             }
             .store(in: &cancellables)
     }

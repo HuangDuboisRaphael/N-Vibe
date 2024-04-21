@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Combine
 import MapboxNavigation
 import MapboxMaps
+import MapboxDirections
 
 final class HomeViewController: UIViewController {
     // MARK: - Properties
@@ -19,6 +21,8 @@ final class HomeViewController: UIViewController {
         case emptyArrival
         case bothFilled
     }
+    
+    private var cancellables = Set<AnyCancellable>()
     
     private var searchLocationState: SearchLocationState {
         startSearchButton.title(for: .normal) == "Votre position" ? .emptyStart :
@@ -39,6 +43,7 @@ final class HomeViewController: UIViewController {
         view.mapView.ornaments.options.compass.position = .bottomTrailing
         view.mapView.ornaments.logoView.isHidden = true
         view.mapView.ornaments.attributionButton.isHidden = true
+        view.mapView.mapboxMap.setCamera(to: CameraOptions(center: LocationManager.shared.currentLocation.coordinate, zoom: 16))
         return view
     }()
     
@@ -58,6 +63,7 @@ final class HomeViewController: UIViewController {
         view.imageEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
         view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 0)
         view.contentHorizontalAlignment = .left
+        view.isHidden = true
         return view
     }()
     
@@ -112,12 +118,13 @@ final class HomeViewController: UIViewController {
         view.layer.cornerRadius = 20
         view.setSystemImage(named: "paperplane.circle.fill")
         view.setBorder(width: 0.5, color: .black.withAlphaComponent(0.6))
+        view.isHidden = true
         return view
     }()
     
     private lazy var directionButton: DirectionButton = {
         let view = DirectionButton(style: .itinerary)
-        view.setGeneralComponents(self, action: .itineraryButtonDidTapAction, backgroundColor: .white)
+        view.setGeneralComponents(self, action: .directionButtonDidTapAction, backgroundColor: .white)
         view.isHidden = true
         return view
     }()
@@ -136,6 +143,12 @@ final class HomeViewController: UIViewController {
     private lazy var activityIndicatorView: UIActivityIndicatorView = {
         let view = UIActivityIndicatorView(style: .medium)
         view.color = UIColor.black
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
+    private lazy var errorBannerView: ErrorBannerView = {
+        let view = ErrorBannerView()
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
@@ -162,6 +175,8 @@ extension HomeViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBindings()
+        subscribeToCoordinatePublisher()
+        displayUserDeniedLocationAlert()
     }
 }
 
@@ -258,6 +273,15 @@ private extension HomeViewController {
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
+    
+    func makeErrorBannerViewConstraints() {
+        NSLayoutConstraint.activate([
+            errorBannerView.topAnchor.constraint(equalTo: view.topAnchor),
+            errorBannerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            errorBannerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            errorBannerView.heightAnchor.constraint(equalToConstant: 100)
+        ])
+    }
 }
 
 // MARK: ViewModel bindings.
@@ -291,16 +315,63 @@ private extension HomeViewController {
             self.addAnnotations()
             self.drawRoute()
             self.centerCameraToCalculatedRoute()
-            self.activityIndicatorView.stopAnimating()
-            self.activityIndicatorView.isHidden = true
+            self.finishLoadingAction()
             self.mainSearchContainerView.isHidden = true
-            self.directionButton.changeStyle(.start)
-            self.directionButton.isHidden = false
             self.indicationLabel.isHidden = false
             self.indicationLabel.text = self.viewModel.indicationLabelText
             self.locationContainerView.isHidden = false
             self.arrivalSearchButton.setTitle(viewModel.selectedPlacemarkArrival?.name, for: .normal)
+            self.directionButton.changeStyle(self.searchLocationState == .emptyStart ? .start : .inProgress)
+            self.directionButton.isEnabled = self.searchLocationState == .emptyStart ? true : false
         }
+        
+        viewModel.didFailLoading = { [unowned self] error in
+            if let error = error as? APIErrorHandler {
+                if error == .noConnection {
+                    self.showErrorBannerView(error: Constants.MessageError.noInternetConnection)
+                } else {
+                    self.showErrorBannerView(error: Constants.MessageError.cannotRecoverData)
+                }
+            } else if let error = error as? DirectionsError {
+                self.showErrorBannerView(error: Constants.MessageError.cannotStartItinerary)
+            } else {
+                self.showErrorBannerView(error: Constants.MessageError.defaultMessageError)
+            }
+            self.finishLoadingAction()
+            self.directionButton.style = .itinerary
+        }
+    }
+}
+
+// MARK: LocationManager bindings.
+private extension HomeViewController {
+    func displayUserDeniedLocationAlert() {
+        LocationManager.shared.deniedLocationAccessPublisher
+            .sink { [unowned self] in
+                self.viewModel.displayUserLocationAlert(
+                    title: Constants.MessageError.warning,
+                    message: Constants.MessageError.locationDisabled)
+            }
+            .store(in: &cancellables)
+    }
+    
+    func subscribeToCoordinatePublisher() {
+        LocationManager.shared.coordinatePublisher
+            .sink { [unowned self] completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure:
+                    self.viewModel.displayUserLocationAlert(
+                        title: Constants.MessageError.warning,
+                        message: Constants.MessageError.cannotRecoverLocation)
+                }
+            } receiveValue: { [unowned self] in
+                self.mainSearchButton.isHidden = false
+                self.currentUserLocationButton.isHidden = false
+                self.currentUserLocationButtonDidTap()
+            }
+            .store(in: &cancellables)
     }
 }
 
@@ -373,12 +444,12 @@ private extension HomeViewController {
         navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.pointIdentifer)
         switch searchLocationState {
         case .emptyStart:
-            _ = createAnnotation(Constants.PointAnnotation.arrival, at: viewModel.selectedPlacemarkArrival?.coordinate ?? CLLocationCoordinate2D(), isVisible: true)
+            _ = createAnnotation(Constants.PointAnnotation.start, at: viewModel.selectedPlacemarkArrival?.coordinate ?? CLLocationCoordinate2D(), isVisible: true)
         case .emptyArrival:
-            _ = createAnnotation(Constants.PointAnnotation.start, at: viewModel.selectedPlacemarkStart?.coordinate ?? CLLocationCoordinate2D(), isVisible: true)
+            _ = createAnnotation(Constants.PointAnnotation.arrival, at: viewModel.selectedPlacemarkStart?.coordinate ?? CLLocationCoordinate2D(), isVisible: true)
         case .bothFilled:
-            let startAnnotation = createAnnotation(Constants.PointAnnotation.start, at: viewModel.selectedPlacemarkStart?.coordinate ?? CLLocationCoordinate2D())
-            let arrivalAnnotation = createAnnotation(Constants.PointAnnotation.arrival, at: viewModel.selectedPlacemarkArrival?.coordinate ?? CLLocationCoordinate2D())
+            let startAnnotation = createAnnotation(Constants.PointAnnotation.arrival, at: viewModel.selectedPlacemarkStart?.coordinate ?? CLLocationCoordinate2D())
+            let arrivalAnnotation = createAnnotation(Constants.PointAnnotation.start, at: viewModel.selectedPlacemarkArrival?.coordinate ?? CLLocationCoordinate2D())
             pointAnnotationManager.annotations = [startAnnotation, arrivalAnnotation]
         }
     }
@@ -386,6 +457,12 @@ private extension HomeViewController {
 
 // MARK: Refactoring altering UIView state methods.
 private extension HomeViewController {
+    func finishLoadingAction() {
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = true
+        directionButton.isHidden = false
+    }
+    
     func didSelectLocationAction() {
         navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.polylineIdentifier)
         viewModel.calculateRouteWithApi()
@@ -397,10 +474,34 @@ private extension HomeViewController {
         mainSearchButton.setTitle("Votre recherche", color: .black.withAlphaComponent(0.5))
         cancelButton.isHidden = true
         directionButton.isHidden = true
+        directionButton.isEnabled = true
         directionButton.changeStyle(.itinerary)
         indicationLabel.isHidden = true
         viewModel.selectedPlacemarkStart = nil
         viewModel.selectedPlacemarkArrival = nil
+    }
+}
+
+// MARK: Methods related to ErrorBannerView.
+private extension HomeViewController {
+    func showErrorBannerView(error: String) {
+        errorBannerView.setError(error)
+        view.addSubview(errorBannerView)
+        makeErrorBannerViewConstraints()
+        
+        // Animate showing the banner
+        UIView.animate(withDuration: 0.5) {
+            self.errorBannerView.frame.origin.y = 0
+        }
+        
+        // Dismiss the banner after a certain duration
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
+            UIView.animate(withDuration: 0.5) {
+                self.errorBannerView.frame.origin.y = -self.errorBannerView.frame.height
+            } completion: { _ in
+                self.errorBannerView.removeFromSuperview()
+            }
+        }
     }
 }
 
@@ -431,19 +532,22 @@ private extension HomeViewController {
     }
     
     func swapLocationButtonDidTap() {
+        swapAnnotations()
         switch searchLocationState {
         case .emptyStart:
             viewModel.selectedPlacemarkStart = viewModel.selectedPlacemarkArrival ?? Placemark(name: "", coordinate: CLLocationCoordinate2D())
-            viewModel.selectedPlacemarkArrival?.coordinate = LocationManager.shared.currentLocation.coordinate
-            viewModel.selectedPlacemarkArrival?.name = "Votre position"
+            viewModel.selectedPlacemarkArrival = Placemark(name: "Votre position", coordinate: LocationManager.shared.currentLocation.coordinate)
             startSearchButton.setTitle(viewModel.selectedPlacemarkStart?.name, for: .normal)
             arrivalSearchButton.setTitle(viewModel.selectedPlacemarkArrival?.name, for: .normal)
+            directionButton.changeStyle(.inProgress)
+            directionButton.isEnabled = false
         case .emptyArrival:
             viewModel.selectedPlacemarkArrival = viewModel.selectedPlacemarkStart ?? Placemark(name: "", coordinate: CLLocationCoordinate2D())
-            viewModel.selectedPlacemarkStart?.coordinate = LocationManager.shared.currentLocation.coordinate
-            viewModel.selectedPlacemarkStart?.name = "Votre position"
+            viewModel.selectedPlacemarkStart = Placemark(name: "Votre position", coordinate: LocationManager.shared.currentLocation.coordinate)
             arrivalSearchButton.setTitle(viewModel.selectedPlacemarkArrival?.name, for: .normal)
             startSearchButton.setTitle(viewModel.selectedPlacemarkStart?.name, for: .normal)
+            directionButton.changeStyle(.start)
+            directionButton.isEnabled = true
         case .bothFilled:
             let selectedPlacemarkStart = viewModel.selectedPlacemarkStart ?? Placemark(name: "", coordinate: CLLocationCoordinate2D())
             viewModel.selectedPlacemarkStart = viewModel.selectedPlacemarkArrival
@@ -451,19 +555,22 @@ private extension HomeViewController {
             viewModel.selectedPlacemarkArrival = selectedPlacemarkStart
             arrivalSearchButton.setTitle(selectedPlacemarkStart.name, for: .normal)
         }
-        swapAnnotations()
     }
     
     func currentUserLocationButtonDidTap() {
         centerCameraToUserCurrentLocation()
+        if !cancellables.isEmpty {
+            cancellables.forEach({ $0.cancel() })
+            cancellables.removeAll()
+        }
     }
     
-    func itineraryButtonDidTap(sender: DirectionButton) {
+    func directionButtonDidTap(sender: DirectionButton) {
         if sender.style == .itinerary {
             directionButton.isHidden = true
             viewModel.calculateRouteWithApi()
         } else {
-            viewModel.tryDisplayingMapboxNavigation()
+            viewModel.displayMapboxNavigation()
         }
     }
 }
@@ -476,5 +583,5 @@ private extension Selector {
     static let cancelStartNavigationButtonDidTapAction = #selector(HomeViewController.cancelStartNavigationButtonDidTap)
     static let swapLocationButtonDidTapAction = #selector(HomeViewController.swapLocationButtonDidTap)
     static let currentUserLocationButtonDidTapAction = #selector(HomeViewController.currentUserLocationButtonDidTap)
-    static let itineraryButtonDidTapAction = #selector(HomeViewController.itineraryButtonDidTap)
+    static let directionButtonDidTapAction = #selector(HomeViewController.directionButtonDidTap)
 }

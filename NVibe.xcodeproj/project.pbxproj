@@ -25,6 +25,8 @@
 		C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */; };
 		C297B8BB2BD5431400A16CE5 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8BA2BD5431400A16CE5 /* UIButton+Extensions.swift */; };
 		C297B8BE2BD54CC700A16CE5 /* PlacemarkSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */; };
+		C297B8C02BD58F7C00A16CE5 /* ErrorBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8BF2BD58F7C00A16CE5 /* ErrorBannerView.swift */; };
+		C297B8C32BD5B50300A16CE5 /* NetworkUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8C22BD5B50300A16CE5 /* NetworkUtils.swift */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
@@ -64,6 +66,8 @@
 		C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionButton.swift; sourceTree = "<group>"; };
 		C297B8BA2BD5431400A16CE5 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
 		C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkSearchButton.swift; sourceTree = "<group>"; };
+		C297B8BF2BD58F7C00A16CE5 /* ErrorBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorBannerView.swift; sourceTree = "<group>"; };
+		C297B8C22BD5B50300A16CE5 /* NetworkUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtils.swift; sourceTree = "<group>"; };
 		C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandler.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 				C224C5EB2BD00A7D0045527C /* Scenes */,
 				C2B8D50D2BD0257E007529A6 /* Service */,
 				C297B8BC2BD54C7100A16CE5 /* UIView */,
+				C297B8C12BD5B4EB00A16CE5 /* Utils */,
 				C224C5B92BD007FF0045527C /* Info.plist */,
 			);
 			path = NVibe;
@@ -233,9 +238,18 @@
 			isa = PBXGroup;
 			children = (
 				C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */,
+				C297B8BF2BD58F7C00A16CE5 /* ErrorBannerView.swift */,
 				C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */,
 			);
 			path = UIView;
+			sourceTree = "<group>";
+		};
+		C297B8C12BD5B4EB00A16CE5 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C297B8C22BD5B50300A16CE5 /* NetworkUtils.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		C2B8D50D2BD0257E007529A6 /* Service */ = {
@@ -410,11 +424,13 @@
 				C297B8BB2BD5431400A16CE5 /* UIButton+Extensions.swift in Sources */,
 				C2024BFE2BD41656005793A4 /* Double+Extensions.swift in Sources */,
 				C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */,
+				C297B8C02BD58F7C00A16CE5 /* ErrorBannerView.swift in Sources */,
 				C297B8BE2BD54CC700A16CE5 /* PlacemarkSearchButton.swift in Sources */,
 				C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */,
 				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
 				C2B918442BD16943004F909B /* HomeViewModel.swift in Sources */,
 				C2B8D5212BD02AE2007529A6 /* Configuration.swift in Sources */,
+				C297B8C32BD5B50300A16CE5 /* NetworkUtils.swift in Sources */,
 				C2B8D52B2BD07476007529A6 /* LocationManager.swift in Sources */,
 				C2024C012BD41BD9005793A4 /* Constants.swift in Sources */,
 				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,

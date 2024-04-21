@@ -8,7 +8,9 @@
 import UIKit
 
 protocol SearchLocationCoordinatorFlowDelegate: AnyObject {
-    func closeView()
+    func didSelectedPlacemarkToCloseView()
+    func errorResultingClosingView()
+    func removeCoordinator()
 }
 
 final class SearchLocationCoordinator: BaseCoordinator {
@@ -36,7 +38,7 @@ final class SearchLocationCoordinator: BaseCoordinator {
 }
 
 extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
-    func closeView() {
+    func didSelectedPlacemarkToCloseView() {
         parentViewController.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             if searchLocationViewController.isSearchingArrival {
@@ -51,7 +53,18 @@ extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
                 self.parentViewController.viewModel.selectedPlacemarkStart = searchLocationViewController.viewModel.selectedPlacemarkStart
                 self.parentViewController.viewModel.didSelectNewStart?()
             }
-            finishFlow?()
         }
+    }
+    
+    func errorResultingClosingView() {
+        parentViewController.dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.parentViewController.viewModel.displayUserLocationAlert(title: Constants.MessageError.error, message: Constants.MessageError.cannotDisplayAddresses)
+        }
+        finishFlow?()
+    }
+    
+    func removeCoordinator() {
+        finishFlow?()
     }
 }

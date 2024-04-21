@@ -10,18 +10,11 @@ import UIKit
 final class DirectionButton: UIButton {
     enum Style {
         case itinerary
+        case inProgress
         case start
     }
     
     var style: DirectionButton.Style
-    
-    override var isHighlighted: Bool {
-        didSet {
-            if isHighlighted && style == .itinerary {
-                backgroundColor = .lightGray
-            }
-        }
-    }
     
     init(style: Style) {
         self.style = style
@@ -61,15 +54,21 @@ final class DirectionButton: UIButton {
             imageEdgeInsets = UIEdgeInsets(top: 0, left: 8, bottom: 0, right: 0)
             titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0)
             contentHorizontalAlignment = .left
+        case .inProgress:
+            setInProgressAndStartStyle(with: "En cours", backgroundCor: .gray)
         case .start:
-            backgroundColor = .systemBlue
-            setTitle("Démarrer", for: .normal)
-            setTitleColor(.white, for: .normal)
-            setImage(nil, for: .normal)
-            imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-            titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
-            contentHorizontalAlignment = .center
+            setInProgressAndStartStyle(with: "Démarrer", backgroundCor: .systemBlue)
         }
+    }
+    
+    private func setInProgressAndStartStyle(with title: String, backgroundCor: UIColor) {
+        backgroundColor = backgroundCor
+        setTitle(title, for: .normal)
+        setTitleColor(.white, for: .normal)
+        setImage(nil, for: .normal)
+        imageEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        titleEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        titleLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+        contentHorizontalAlignment = .center
     }
 }
