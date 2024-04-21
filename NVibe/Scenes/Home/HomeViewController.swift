@@ -72,6 +72,79 @@ final class HomeViewController: UIViewController {
         return view
     }()
     
+    private lazy var locationContainerView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .white
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.isHidden = true
+        return view
+    }()
+    
+    private lazy var originSearchButton: UIButton = {
+        let view = UIButton()
+        view.layer.cornerRadius = 4
+        view.backgroundColor = .white
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        view.addTarget(self, action: .originSearchButtonDidTapAction, for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set text on the right
+        view.setTitle("Votre position", for: .normal)
+        view.setTitleColor(.black, for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        // Set image and text position
+        view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+        view.contentHorizontalAlignment = .left
+        
+        return view
+    }()
+    
+    private lazy var destinationSearchButton: UIButton = {
+        let view = UIButton()
+        view.layer.cornerRadius = 4
+        view.backgroundColor = .white
+        view.layer.masksToBounds = true
+        view.layer.borderWidth = 1
+        view.layer.borderColor = UIColor.black.withAlphaComponent(0.3).cgColor
+        view.addTarget(self, action: .destinationSearchButtonDidTapAction, for: .touchUpInside)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
+        // Set text on the right
+        view.setTitleColor(.black, for: .normal)
+        view.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+        
+        // Set image and text position
+        view.titleEdgeInsets = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+        view.contentHorizontalAlignment = .left
+        
+        return view
+    }()
+    
+    private lazy var cancelStartNavigationButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: .cancelStartNavigationButtonDidTapAction, for: .touchUpInside)
+        let image = UIImage(systemName: "chevron.left")?.resizeImage(targetSize: CGSize(width: 20, height: 20))
+        view.tintColor = .black
+        view.setImage(image, for: .normal)
+        view.contentEdgeInsets = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 10)
+        return view
+    }()
+    
+    private lazy var swapLocationButton: UIButton = {
+        let view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.addTarget(self, action: .swapLocationButtonDidTapAction, for: .touchUpInside)
+        let image = UIImage(systemName: "arrow.up.arrow.down")
+        view.tintColor = .black
+        view.setImage(image, for: .normal)
+        view.contentEdgeInsets = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
+        return view
+    }()
+    
     private lazy var currentUserLocationButton: UIButton = {
         let view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -133,14 +206,23 @@ extension HomeViewController {
         super.viewDidLoad()
         setupBindings()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
 }
 
 extension HomeViewController {
     func addLayouts() {
         searchContainerView.addSubview(searchButton)
         searchContainerView.addSubview(cancelButton)
+        locationContainerView.addSubview(originSearchButton)
+        locationContainerView.addSubview(destinationSearchButton)
+        locationContainerView.addSubview(cancelStartNavigationButton)
+        locationContainerView.addSubview(swapLocationButton)
         view.addSubview(navigationMapView)
         view.addSubview(searchContainerView)
+        view.addSubview(locationContainerView)
         view.addSubview(currentUserLocationButton)
         view.addSubview(directionButton)
         view.addSubview(indicationLabel)
@@ -168,6 +250,37 @@ extension HomeViewController {
         ])
         
         NSLayoutConstraint.activate([
+            locationContainerView.topAnchor.constraint(equalTo: view.topAnchor),
+            locationContainerView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            locationContainerView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            locationContainerView.heightAnchor.constraint(equalToConstant: view.bounds.height * 0.23)
+        ])
+        
+        NSLayoutConstraint.activate([
+            destinationSearchButton.centerXAnchor.constraint(equalTo: locationContainerView.centerXAnchor),
+            destinationSearchButton.bottomAnchor.constraint(equalTo: locationContainerView.bottomAnchor, constant: -12),
+            destinationSearchButton.heightAnchor.constraint(equalToConstant: 40),
+            destinationSearchButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7)
+        ])
+        
+        NSLayoutConstraint.activate([
+            originSearchButton.centerXAnchor.constraint(equalTo: locationContainerView.centerXAnchor),
+            originSearchButton.bottomAnchor.constraint(equalTo: destinationSearchButton.topAnchor, constant: -12),
+            originSearchButton.heightAnchor.constraint(equalToConstant: 40),
+            originSearchButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.7)
+        ])
+        
+        NSLayoutConstraint.activate([
+            cancelStartNavigationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            cancelStartNavigationButton.centerYAnchor.constraint(equalTo: originSearchButton.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            swapLocationButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            swapLocationButton.centerYAnchor.constraint(equalTo: destinationSearchButton.centerYAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
             currentUserLocationButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
             currentUserLocationButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12),
             currentUserLocationButton.widthAnchor.constraint(equalToConstant: 40),
@@ -191,25 +304,50 @@ extension HomeViewController {
             activityIndicatorView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
-    
+}
+
+private extension HomeViewController {
     func setupBindings() {
-        viewModel.didSelectDestination = { [unowned self] in
+        viewModel.isLoadingBackgroundTasks = { [unowned self] in
+            self.directionButton.isHidden = true
+            self.indicationLabel.isHidden = true
+            self.activityIndicatorView.startAnimating()
+            self.activityIndicatorView.isHidden = false
+        }
+        
+        viewModel.didSelectFirstDestination = { [unowned self] in
             self.searchButton.setTitle(viewModel.selectedDestination?.name, for: .normal)
             self.searchButton.setTitleColor(.black, for: .normal)
             self.cancelButton.isHidden = false
-            self.addAnnotation(at: self.viewModel.destination.coordinate)
+            self.addAnnotation(at: self.viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D())
             self.centerCameraToDestination()
         }
         
+        viewModel.didSelectNewOrigin = { [unowned self] in
+            self.originSearchButton.setTitle(viewModel.selectedOrigin?.name, for: .normal)
+            self.navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.polylineIdentifier)
+            self.viewModel.calculateRouteWithApi()
+        }
+        
+        viewModel.didSelectNewDestination = { [unowned self] in
+            self.destinationSearchButton.setTitle(viewModel.selectedDestination?.name, for: .normal)
+            self.navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.polylineIdentifier)
+            self.viewModel.calculateRouteWithApi()
+        }
+        
         viewModel.didCalculateRoute = { [unowned self] in
+            self.addAnnotations()
             self.drawRoute()
             self.centerCameraToCalculatedRoute()
             self.activityIndicatorView.stopAnimating()
             self.activityIndicatorView.isHidden = true
+            self.searchContainerView.isHidden = true
             self.directionButton.changeStyle(.start)
             self.directionButton.isHidden = false
             self.indicationLabel.isHidden = false
             self.indicationLabel.text = self.viewModel.indicationLabelText
+            self.locationContainerView.isHidden = false
+            self.destinationSearchButton.setTitle(viewModel.selectedDestination?.name, for: .normal)
         }
     }
 }
@@ -236,7 +374,7 @@ private extension HomeViewController {
     func centerCameraToDestination() {
         let animator = navigationMapView.mapView.camera.makeAnimator(duration: 0.8, curve: .easeIn) { [unowned self] transition in
             transition.zoom.toValue = 15
-            transition.center.toValue = self.viewModel.destination.coordinate
+            transition.center.toValue = self.viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D()
         }
         animator.startAnimation()
         animator.addCompletion { [unowned self] _ in
@@ -250,13 +388,48 @@ private extension HomeViewController {
         pointAnnotationManager.annotations = [pointAnnotation]
     }
     
+    func addAnnotations() {
+        self.navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.pointIdentifer)
+        var originAnnotation: PointAnnotation?
+        if viewModel.selectedOrigin != nil {
+            originAnnotation = PointAnnotation(coordinate: viewModel.selectedOrigin!.coordinate)
+            originAnnotation?.image = .init(image: UIImage(named: "orig-pin")!, name: "orig-pin")
+        }
+        var destinationAnnotation = PointAnnotation(coordinate: viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D())
+        destinationAnnotation.image = .init(image: UIImage(named: "dest-pin")!, name: "dest-pin")
+        if originAnnotation != nil {
+            pointAnnotationManager.annotations = [originAnnotation!, destinationAnnotation]
+        } else {
+            pointAnnotationManager.annotations = [destinationAnnotation]
+        }
+    }
+    
+    func swapAnnotations() {
+        navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.pointIdentifer)
+        if originSearchButton.title(for: .normal) == "Votre position" {
+            var pointAnnotation = PointAnnotation(coordinate: viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D())
+            pointAnnotation.image = .init(image: UIImage(named: "dest-pin")!, name: "dest-pin")
+            pointAnnotationManager.annotations = [pointAnnotation]
+        } else if destinationSearchButton.title(for: .normal) == "Votre position" {
+            var pointAnnotation = PointAnnotation(coordinate: viewModel.selectedOrigin?.coordinate ?? CLLocationCoordinate2D())
+            pointAnnotation.image = .init(image: UIImage(named: "orig-pin")!, name: "orig-pin")
+            pointAnnotationManager.annotations = [pointAnnotation]
+        } else {
+            var originAnnotation = PointAnnotation(coordinate: viewModel.selectedOrigin?.coordinate ?? CLLocationCoordinate2D())
+            originAnnotation.image = .init(image: UIImage(named: "orig-pin")!, name: "orig-pin")
+            var destinationAnnotation = PointAnnotation(coordinate: viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D())
+            destinationAnnotation.image = .init(image: UIImage(named: "dest-pin")!, name: "dest-pin")
+            pointAnnotationManager.annotations = [originAnnotation, destinationAnnotation]
+        }
+    }
+    
     func centerCameraToCalculatedRoute() {
         let bounds = CoordinateBounds(
-            southwest: viewModel.origin.coordinate,
-            northeast: viewModel.destination.coordinate)
+            southwest: viewModel.selectedOrigin == nil ? LocationManager.shared.currentLocation.coordinate : viewModel.selectedOrigin!.coordinate,
+            northeast: viewModel.selectedDestination?.coordinate ?? CLLocationCoordinate2D())
         let camera = navigationMapView.mapView.mapboxMap.camera(
             for: bounds,
-            padding: UIEdgeInsets(top: view.safeAreaInsets.top + searchContainerView.frame.height + 24, left: 80, bottom: view.safeAreaInsets.bottom + directionButton.frame.height + 24, right: 80),
+            padding: UIEdgeInsets(top: locationContainerView.bounds.height + 32, left: 80, bottom: view.safeAreaInsets.bottom + directionButton.frame.height + 24, right: 80),
             bearing: 0,
             pitch: 0
         )
@@ -267,13 +440,10 @@ private extension HomeViewController {
 @objc
 private extension HomeViewController {
     func searchButtonDidTap() {
-        viewModel.displaySearchLocationView()
+        viewModel.displaySearchLocationView(forDestination: true)
     }
     
     func cancelButtonDidTap() {
-        navigationMapView.removeRouteDurations()
-        navigationMapView.removeRoutes()
-        navigationMapView.removeWaypoints()
         navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.pointIdentifer)
         navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.polylineIdentifier)
         searchButton.setTitle("Votre recherche", for: .normal)
@@ -282,6 +452,55 @@ private extension HomeViewController {
         directionButton.isHidden = true
         directionButton.changeStyle(.itinerary)
         indicationLabel.isHidden = true
+        viewModel.selectedOrigin = nil
+        viewModel.selectedDestination = nil
+    }
+    
+    func originSearchButtonDidTap() {
+        viewModel.displaySearchLocationView(forDestination: false)
+    }
+    
+    func destinationSearchButtonDidTap() {
+        viewModel.displaySearchLocationView(forDestination: true)
+    }
+    
+    func cancelStartNavigationButtonDidTap() {
+        searchContainerView.isHidden = false
+        locationContainerView.isHidden = true
+        searchButton.setTitle("Votre recherche", for: .normal)
+        originSearchButton.setTitle("Votre position", for: .normal)
+        searchButton.setTitleColor(.black.withAlphaComponent(0.5), for: .normal)
+        cancelButton.isHidden = true
+        navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.pointIdentifer)
+        navigationMapView.mapView.annotations.removeAnnotationManager(withId: Constants.AnnotationManager.polylineIdentifier)
+        directionButton.isHidden = true
+        directionButton.changeStyle(.itinerary)
+        indicationLabel.isHidden = true
+        viewModel.selectedOrigin = nil
+        viewModel.selectedDestination = nil
+    }
+    
+    func swapLocationButtonDidTap() {
+        if originSearchButton.title(for: .normal) == "Votre position" {
+            viewModel.selectedOrigin = viewModel.selectedDestination ?? (name: "", coordinate: CLLocationCoordinate2D())
+            viewModel.selectedDestination?.coordinate = LocationManager.shared.currentLocation.coordinate
+            viewModel.selectedDestination?.name = "Votre position"
+            originSearchButton.setTitle(viewModel.selectedOrigin?.name, for: .normal)
+            destinationSearchButton.setTitle(viewModel.selectedDestination?.name, for: .normal)
+        } else if destinationSearchButton.title(for: .normal) == "Votre position" {
+            viewModel.selectedDestination = viewModel.selectedOrigin ?? (name: "", coordinate: CLLocationCoordinate2D())
+            viewModel.selectedOrigin?.coordinate = LocationManager.shared.currentLocation.coordinate
+            viewModel.selectedOrigin?.name = "Votre position"
+            destinationSearchButton.setTitle(viewModel.selectedDestination?.name, for: .normal)
+            originSearchButton.setTitle(viewModel.selectedOrigin?.name, for: .normal)
+        } else {
+            let selectedOrigin = viewModel.selectedOrigin ?? (name: "", coordinate: CLLocationCoordinate2D())
+            viewModel.selectedOrigin = viewModel.selectedDestination
+            originSearchButton.setTitle(viewModel.selectedOrigin?.name, for: .normal)
+            viewModel.selectedDestination = selectedOrigin
+            destinationSearchButton.setTitle(selectedOrigin.name, for: .normal)
+        }
+        swapAnnotations()
     }
     
     func currentUserLocationButtonDidTap() {
@@ -291,11 +510,9 @@ private extension HomeViewController {
     func itineraryButtonDidTap(sender: DirectionButton) {
         if sender.style == .itinerary {
             directionButton.isHidden = true
-            activityIndicatorView.startAnimating()
-            activityIndicatorView.isHidden = false
             viewModel.calculateRouteWithApi()
         } else {
-            viewModel.displayMapboxNavigation()
+            viewModel.tryDisplayingMapboxNavigation()
         }
     }
 }
@@ -303,6 +520,10 @@ private extension HomeViewController {
 private extension Selector {
     static let searchButtonDidTapAction = #selector(HomeViewController.searchButtonDidTap)
     static let cancelButtonDidTapAction = #selector(HomeViewController.cancelButtonDidTap)
+    static let originSearchButtonDidTapAction = #selector(HomeViewController.originSearchButtonDidTap)
+    static let destinationSearchButtonDidTapAction = #selector(HomeViewController.destinationSearchButtonDidTap)
+    static let cancelStartNavigationButtonDidTapAction = #selector(HomeViewController.cancelStartNavigationButtonDidTap)
+    static let swapLocationButtonDidTapAction = #selector(HomeViewController.swapLocationButtonDidTap)
     static let currentUserLocationButtonDidTapAction = #selector(HomeViewController.currentUserLocationButtonDidTap)
     static let itineraryButtonDidTapAction = #selector(HomeViewController.itineraryButtonDidTap)
 }

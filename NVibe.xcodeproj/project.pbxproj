@@ -10,6 +10,7 @@
 		C2024BFE2BD41656005793A4 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024BFD2BD41656005793A4 /* Double+Extensions.swift */; };
 		C2024C012BD41BD9005793A4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024C002BD41BD9005793A4 /* Constants.swift */; };
 		C2024C042BD41DBA005793A4 /* LineString.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024C032BD41DBA005793A4 /* LineString.swift */; };
+		C2024C082BD459B6005793A4 /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2024C072BD459B6005793A4 /* UIImage+Extensions.swift */; };
 		C224C5AC2BD007FC0045527C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AB2BD007FC0045527C /* AppDelegate.swift */; };
 		C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AD2BD007FC0045527C /* SceneDelegate.swift */; };
 		C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* HomeViewController.swift */; };
@@ -25,7 +26,6 @@
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
 		C265FD1A2BD2999700741E94 /* LoadableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD192BD2999700741E94 /* LoadableObject.swift */; };
 		C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */; };
-		C265FD1F2BD3441E00741E94 /* MapboxNavigationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
@@ -65,6 +65,7 @@
 		C2024BFD2BD41656005793A4 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		C2024C002BD41BD9005793A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		C2024C032BD41DBA005793A4 /* LineString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineString.swift; sourceTree = "<group>"; };
+		C2024C072BD459B6005793A4 /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
 		C224C5A82BD007FC0045527C /* NVibe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NVibe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C224C5AB2BD007FC0045527C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C224C5AD2BD007FC0045527C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		C224C5ED2BD00A960045527C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C265FD192BD2999700741E94 /* LoadableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableObject.swift; sourceTree = "<group>"; };
 		C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionButton.swift; sourceTree = "<group>"; };
-		C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapboxNavigationCoordinator.swift; sourceTree = "<group>"; };
 		C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandler.swift; sourceTree = "<group>"; };
@@ -133,6 +133,7 @@
 			isa = PBXGroup;
 			children = (
 				C2024BFD2BD41656005793A4 /* Double+Extensions.swift */,
+				C2024C072BD459B6005793A4 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -260,7 +261,6 @@
 			children = (
 				C224C5EC2BD00A8B0045527C /* Home */,
 				C2E894142BD1A625008B7472 /* SearchLocation */,
-				C265FD1D2BD343E800741E94 /* Mapbox Navigation */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -282,14 +282,6 @@
 				C265FD192BD2999700741E94 /* LoadableObject.swift */,
 			);
 			path = "Loading State";
-			sourceTree = "<group>";
-		};
-		C265FD1D2BD343E800741E94 /* Mapbox Navigation */ = {
-			isa = PBXGroup;
-			children = (
-				C265FD1E2BD3441E00741E94 /* MapboxNavigationCoordinator.swift */,
-			);
-			path = "Mapbox Navigation";
 			sourceTree = "<group>";
 		};
 		C2B8D50D2BD0257E007529A6 /* Service */ = {
@@ -532,7 +524,6 @@
 				C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */,
 				C2E894182BD1A69B008B7472 /* SearchLocationViewController.swift in Sources */,
 				C2B918412BD1660E004F909B /* HomeDirectionService.swift in Sources */,
-				C265FD1F2BD3441E00741E94 /* MapboxNavigationCoordinator.swift in Sources */,
 				C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */,
 				C224C5E52BD009C00045527C /* Coordinator.swift in Sources */,
 				C2E8941F2BD1CADE008B7472 /* SearchLocationViewModel.swift in Sources */,
@@ -545,6 +536,7 @@
 				C2B8D5172BD02613007529A6 /* HTTPMethod.swift in Sources */,
 				C2E8941B2BD1A6B4008B7472 /* SearchLocationCoordinator.swift in Sources */,
 				C224C5AE2BD007FC0045527C /* SceneDelegate.swift in Sources */,
+				C2024C082BD459B6005793A4 /* UIImage+Extensions.swift in Sources */,
 				C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -728,8 +720,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -762,8 +754,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "N-Vibe a besoin de votre location pour vous diriger.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

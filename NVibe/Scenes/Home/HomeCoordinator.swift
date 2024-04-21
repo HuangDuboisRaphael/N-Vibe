@@ -6,15 +6,19 @@
 //
 
 import UIKit
+import MapboxNavigation
+import MapboxDirections
 
 protocol HomeCoordinatorFlowDelegate: AnyObject {
-    func displaySearchLocationView()
+    var navigationViewController: NavigationViewController? { get set }
+    func displaySearchLocationView(forDestination: Bool)
     func displayMapboxNavigation()
 }
 
-final class HomeCoordinator: BaseCoordinator {
+final class HomeCoordinator: BaseCoordinator, HomeCoordinatorFlowDelegate {
     var childCoordinators = [Coordinator]()
     var finishFlow: (() -> Void)?
+    var navigationViewController: NavigationViewController?
     
     private let window: UIWindow
     private let navigationController = UINavigationController()
@@ -34,11 +38,9 @@ final class HomeCoordinator: BaseCoordinator {
         window.makeKeyAndVisible()
         navigationController.pushViewController(homeViewController, animated: true)
     }
-}
-
-extension HomeCoordinator: HomeCoordinatorFlowDelegate {
-    func displaySearchLocationView() {
-        let coordinator = SearchLocationCoordinator(navigationController: navigationController, parentViewController: homeViewController)
+    
+    func displaySearchLocationView(forDestination isSearchingADestination: Bool) {
+        let coordinator = SearchLocationCoordinator(parentViewController: homeViewController, isSearchingADestination: isSearchingADestination)
         coordinator.finishFlow = { [self, unowned coordinator] in
             remove(coordinator: coordinator)
         }
@@ -47,11 +49,10 @@ extension HomeCoordinator: HomeCoordinatorFlowDelegate {
     }
     
     func displayMapboxNavigation() {
-        let coordinator = MapboxNavigationCoordinator(parentViewController: homeViewController)
-        coordinator.finishFlow = { [self, unowned coordinator] in
-            remove(coordinator: coordinator)
-        }
-        add(coordinator: coordinator)
-        coordinator.start()
+        guard let routeResponse = homeViewController.viewModel.routeResponse else { return }
+        navigationViewController = NavigationViewController(for: routeResponse, routeIndex: 0, routeOptions: homeViewController.viewModel.routeOptions)
+        guard let navigationViewController = navigationViewController else { return }
+        navigationViewController.modalPresentationStyle = .fullScreen
+        homeViewController.present(navigationViewController, animated: true)
     }
 }

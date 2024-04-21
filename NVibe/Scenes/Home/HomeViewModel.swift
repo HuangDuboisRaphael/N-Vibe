@@ -12,36 +12,45 @@ import MapboxDirections
 import MapboxCoreNavigation
 
 protocol HomeViewModelRepresentable: LoadableObject {
-    var origin: Waypoint { get }
-    var destination: Waypoint { get }
+    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
     var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
     var routeOptions: NavigationRouteOptions { get }
-    var routeResponse: RouteResponse? { get }
+    var routeResponse: RouteResponse? { get set }
     var direction: Direction? { get }
-    var didSelectDestination: (() -> Void)? { get set }
+    var isLoadingBackgroundTasks: (() -> Void)? { get set }
+    var didSelectFirstDestination: (() -> Void)? { get set }
+    var didSelectNewOrigin: (() -> Void)? { get set }
+    var didSelectNewDestination: (() -> Void)? { get set }
     var didCalculateRoute: (() -> Void)? { get set }
     var indicationLabelText: String { get }
     var lineCoordinates: [CLLocationCoordinate2D] { get }
     
     func calculateRouteWithApi()
-    func calculateRoute()
-    func displaySearchLocationView()
-    func displayMapboxNavigation()
+    func tryDisplayingMapboxNavigation()
+    func displaySearchLocationView(forDestination: Bool)
 }
 
 final class HomeViewModel: HomeViewModelRepresentable {
-    var origin: Waypoint {
-        Waypoint(coordinate: LocationManager.shared.currentLocation.coordinate, coordinateAccuracy: -1, name: "Start")
+    var isLoadingBackgroundTasks: (() -> Void)?
+    
+    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)?
+    
+    var didSelectNewOrigin: (() -> Void)?
+    
+    var didSelectNewDestination: (() -> Void)?
+    
+    private var origin: Waypoint {
+        Waypoint(coordinate: self.selectedOrigin?.coordinate ?? LocationManager.shared.currentLocation.coordinate, coordinateAccuracy: -1, name: "Start")
     }
     
-    var destination: Waypoint {
+    private var destination: Waypoint {
         Waypoint(coordinate: self.selectedDestination?.coordinate ?? CLLocationCoordinate2D(), coordinateAccuracy: -1, name: "Finish")
     }
     
     var routeOptions: NavigationRouteOptions {
         NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .walking)
     }
-    var didSelectDestination: (() -> Void)?
+    var didSelectFirstDestination: (() -> Void)?
     var didCalculateRoute: (() -> Void)?
     var routeResponse: RouteResponse?
     
@@ -51,10 +60,11 @@ final class HomeViewModel: HomeViewModelRepresentable {
             case .idle:
                 break
             case .loading:
-                break
+                isLoadingBackgroundTasks?()
             case .failed(let error):
                 print(error)
             case .loaded:
+                cancellables.forEach({ $0.cancel() })
                 didCalculateRoute?()
             }
         }
@@ -70,10 +80,11 @@ final class HomeViewModel: HomeViewModelRepresentable {
     private var cancellables = Set<AnyCancellable>()
     private var coordinatesToQuery: String {
         guard let selectedDestination = selectedDestination else { return "" }
-        return "\(LocationManager.shared.currentLocation.coordinate.longitude),\(LocationManager.shared.currentLocation.coordinate.latitude);\(selectedDestination.coordinate.longitude),\(selectedDestination.coordinate.latitude)"
+        return selectedOrigin == nil ? "\(LocationManager.shared.currentLocation.coordinate.longitude),\(LocationManager.shared.currentLocation.coordinate.latitude);\(selectedDestination.coordinate.longitude),\(selectedDestination.coordinate.latitude)" :
+            "\(selectedOrigin!.coordinate.longitude),\(selectedOrigin!.coordinate.latitude);\(selectedDestination.coordinate.longitude),\(selectedDestination.coordinate.latitude)"
     }
     var lineCoordinates: [CLLocationCoordinate2D] {
-        guard let direction = direction else { return []}
+        guard let direction = direction else { return [] }
         let coordinates: [CLLocationCoordinate2D] = (direction.routes[0].geometry.coordinates.map { coordinatePair in
             CLLocationCoordinate2DMake(coordinatePair[1], coordinatePair[0])
         })
@@ -96,6 +107,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
     }
     
     func calculateRouteWithApi() {
+        loadingState = .loading
         homeNetworkService.retrieveDirectionsForWalking(with: coordinatesToQuery)
             .receive(on: DispatchQueue.main)
             .sink { completion in
@@ -106,15 +118,15 @@ final class HomeViewModel: HomeViewModelRepresentable {
                     print(error)
                 }
             } receiveValue: { response in
-                print(response)
                 self.direction = response
                 self.loadingState = .loaded
             }
             .store(in: &cancellables)
     }
     
-    func calculateRoute() {
-        self.loadingState = .loading
+    func tryDisplayingMapboxNavigation() {
+        loadingState = .loading
+        flowDelegate.navigationViewController?.navigationService.router.finishRouting()
         homeDirectionService.calculateRoute(routeOptions)
             .sink { completion in
                 switch completion {
@@ -125,16 +137,13 @@ final class HomeViewModel: HomeViewModelRepresentable {
                 }
             } receiveValue: { [unowned self] response in
                 self.routeResponse = response
+                flowDelegate.displayMapboxNavigation()
                 self.loadingState = .loaded
             }
             .store(in: &cancellables)
     }
     
-    func displaySearchLocationView() {
-        flowDelegate.displaySearchLocationView()
-    }
-    
-    func displayMapboxNavigation() {
-        flowDelegate.displayMapboxNavigation()
+    func displaySearchLocationView(forDestination: Bool) {
+        flowDelegate.displaySearchLocationView(forDestination: forDestination)
     }
 }

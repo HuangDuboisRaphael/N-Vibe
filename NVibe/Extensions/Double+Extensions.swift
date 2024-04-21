@@ -9,13 +9,15 @@ import Foundation
 
 extension Double {
     func convertDurationToText() -> String {
-        // Convert seconds to minutes and round to the nearest minute
-        let durationInMinutes = Int((self / 60).rounded())
-
-        // Create a string representing the duration in minutes
-        let minutes = "\(durationInMinutes) min"
+        let minutes = Int(self / 60)
+        let hours = minutes / 60
+        let remainingMinutes = minutes % 60
         
-        return minutes
+        if hours > 0 {
+            return "\(hours)h\(remainingMinutes)"
+        } else {
+            return "\(minutes)min"
+        }
     }
     
     func convertDistanceToText() -> String {

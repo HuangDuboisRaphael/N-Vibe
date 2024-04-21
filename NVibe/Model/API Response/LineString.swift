@@ -9,5 +9,5 @@ import Foundation
 
 struct LineString: Codable {
     let type: String
-    let coordinates: [[Double]]
+    var coordinates: [[Double]]
 }

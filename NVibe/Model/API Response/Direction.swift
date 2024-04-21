@@ -9,5 +9,5 @@ import Foundation
 
 struct Direction: Codable {
     let code: String
-    let routes: [RouteResponseAPI]
+    var routes: [RouteResponseAPI]
 }

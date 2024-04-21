@@ -10,5 +10,5 @@ import Foundation
 struct RouteResponseAPI: Codable {
     let duration: Double
     let distance: Double
-    let geometry: LineString
+    var geometry: LineString
 }

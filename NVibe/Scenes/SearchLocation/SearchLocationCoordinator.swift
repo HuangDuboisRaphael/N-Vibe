@@ -16,14 +16,16 @@ final class SearchLocationCoordinator: BaseCoordinator {
     var finishFlow: (() -> Void)?
     
     private var parentViewController: HomeViewController
+    private var isSearchingADestination: Bool
     
-    init(navigationController: UINavigationController, parentViewController: HomeViewController) {
+    init(parentViewController: HomeViewController, isSearchingADestination: Bool) {
         self.parentViewController = parentViewController
+        self.isSearchingADestination = isSearchingADestination
     }
     
     private lazy var searchLocationViewController: SearchLocationViewController = {
         let viewModel: SearchLocationViewModelRepresentable = SearchLocationViewModel(flowDelegate: self)
-        let viewController = SearchLocationViewController(viewModel: viewModel)
+        let viewController = SearchLocationViewController(viewModel: viewModel, isSearchingADestination: isSearchingADestination)
         return viewController
     }()
         
@@ -37,8 +39,18 @@ extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
     func closeView() {
         parentViewController.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.destination
-            self.parentViewController.viewModel.didSelectDestination?()
+            if searchLocationViewController.isSearchingADestination {
+                if parentViewController.viewModel.selectedDestination == nil {
+                    self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.selectedDestination
+                    self.parentViewController.viewModel.didSelectFirstDestination?()
+                } else {
+                    self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.selectedDestination
+                    self.parentViewController.viewModel.didSelectNewDestination?()
+                }
+            } else {
+                self.parentViewController.viewModel.selectedOrigin = searchLocationViewController.viewModel.selectedOrigin
+                self.parentViewController.viewModel.didSelectNewOrigin?()
+            }
             finishFlow?()
         }
     }

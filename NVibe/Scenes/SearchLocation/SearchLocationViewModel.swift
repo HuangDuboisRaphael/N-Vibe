@@ -10,16 +10,18 @@ import MapKit
 
 protocol SearchLocationViewModelRepresentable: AnyObject {
     var searchResults: [MKLocalSearchCompletion] { get set }
-    var destination: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
+    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
+    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
     
     func getSingleResult(at indexPath: IndexPath) -> MKLocalSearchCompletion
-    func getDestinationInformation(at indexPath: IndexPath)
+    func getDestinationInformation(at indexPath: IndexPath, isSearchingADestination: Bool)
     func closeView()
 }
 
 final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
     var searchResults: [MKLocalSearchCompletion] = []
-    var destination: (name: String, coordinate: CLLocationCoordinate2D)?
+    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)?
+    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)?
     
     /// Depedencies and initialization.
     private let flowDelegate: SearchLocationCoordinatorFlowDelegate
@@ -32,7 +34,7 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
         searchResults[indexPath.row]
     }
     
-    func getDestinationInformation(at indexPath: IndexPath) {
+    func getDestinationInformation(at indexPath: IndexPath, isSearchingADestination: Bool) {
         let singleResult = getSingleResult(at: indexPath)
         let searchRequest = MKLocalSearch.Request(completion: singleResult)
         
@@ -44,7 +46,11 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
                 let name = response?.mapItems[0].name else {
                 return
             }
-            self.destination = (name: name, coordinate: coordinate)
+            if isSearchingADestination {
+                self.selectedDestination = (name: name, coordinate: coordinate)
+            } else {
+                self.selectedOrigin = (name: name, coordinate: coordinate)
+            }
             self.flowDelegate.closeView()
         }
     }
