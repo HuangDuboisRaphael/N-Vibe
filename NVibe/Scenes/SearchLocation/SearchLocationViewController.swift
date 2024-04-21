@@ -10,7 +10,7 @@ import MapKit
 
 class SearchLocationViewController: UIViewController {
     let viewModel: SearchLocationViewModelRepresentable
-    let isSearchingADestination: Bool
+    let isSearchingArrival: Bool
     private var searchCompleter = MKLocalSearchCompleter()
 
     private lazy var tableView: UITableView = {
@@ -32,7 +32,6 @@ class SearchLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(isSearchingADestination)
         view.backgroundColor = .white
         navigationItem.setHidesBackButton(true, animated: true)
         addLayouts()
@@ -45,9 +44,9 @@ class SearchLocationViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
-    init(viewModel: SearchLocationViewModelRepresentable, isSearchingADestination: Bool) {
+    init(viewModel: SearchLocationViewModelRepresentable, isSearchingArrival: Bool) {
         self.viewModel = viewModel
-        self.isSearchingADestination = isSearchingADestination
+        self.isSearchingArrival = isSearchingArrival
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -120,6 +119,6 @@ extension SearchLocationViewController: UITableViewDataSource {
 
 extension SearchLocationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        viewModel.getDestinationInformation(at: indexPath, isSearchingADestination: isSearchingADestination)
+        viewModel.getPlacemarkInformation(at: indexPath, isSearchingArrival: isSearchingArrival)
     }
 }

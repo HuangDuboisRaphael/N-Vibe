@@ -10,18 +10,18 @@ import MapKit
 
 protocol SearchLocationViewModelRepresentable: AnyObject {
     var searchResults: [MKLocalSearchCompletion] { get set }
-    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
-    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
+    var selectedPlacemarkStart: Placemark? { get set }
+    var selectedPlacemarkArrival: Placemark? { get set }
     
     func getSingleResult(at indexPath: IndexPath) -> MKLocalSearchCompletion
-    func getDestinationInformation(at indexPath: IndexPath, isSearchingADestination: Bool)
+    func getPlacemarkInformation(at indexPath: IndexPath, isSearchingArrival: Bool)
     func closeView()
 }
 
 final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
     var searchResults: [MKLocalSearchCompletion] = []
-    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)?
-    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)?
+    var selectedPlacemarkStart: Placemark?
+    var selectedPlacemarkArrival: Placemark?
     
     /// Depedencies and initialization.
     private let flowDelegate: SearchLocationCoordinatorFlowDelegate
@@ -34,7 +34,7 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
         searchResults[indexPath.row]
     }
     
-    func getDestinationInformation(at indexPath: IndexPath, isSearchingADestination: Bool) {
+    func getPlacemarkInformation(at indexPath: IndexPath, isSearchingArrival: Bool) {
         let singleResult = getSingleResult(at: indexPath)
         let searchRequest = MKLocalSearch.Request(completion: singleResult)
         
@@ -46,10 +46,10 @@ final class SearchLocationViewModel: SearchLocationViewModelRepresentable {
                 let name = response?.mapItems[0].name else {
                 return
             }
-            if isSearchingADestination {
-                self.selectedDestination = (name: name, coordinate: coordinate)
+            if isSearchingArrival {
+                self.selectedPlacemarkArrival = (name: name, coordinate: coordinate)
             } else {
-                self.selectedOrigin = (name: name, coordinate: coordinate)
+                self.selectedPlacemarkStart = (name: name, coordinate: coordinate)
             }
             self.flowDelegate.closeView()
         }

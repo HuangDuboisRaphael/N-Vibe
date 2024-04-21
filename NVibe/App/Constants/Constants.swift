@@ -16,4 +16,13 @@ enum Constants {
             "polyline_annotation_manager"
         }
     }
+    
+    enum PointAnnotation {
+        static var start: String {
+            "start-pin"
+        }
+        static var arrival: String {
+            "arrival-pin"
+        }
+    }
 }

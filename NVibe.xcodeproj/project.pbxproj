@@ -16,9 +16,6 @@
 		C224C5B02BD007FC0045527C /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5AF2BD007FC0045527C /* HomeViewController.swift */; };
 		C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B42BD007FF0045527C /* Assets.xcassets */; };
 		C224C5B82BD007FF0045527C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = C224C5B72BD007FF0045527C /* Base */; };
-		C224C5C32BD007FF0045527C /* NVibeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5C22BD007FF0045527C /* NVibeTests.swift */; };
-		C224C5CD2BD007FF0045527C /* NVibeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CC2BD007FF0045527C /* NVibeUITests.swift */; };
-		C224C5CF2BD007FF0045527C /* NVibeUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */; };
 		C224C5DD2BD008470045527C /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = C224C5DC2BD008470045527C /* .swiftlint.yml */; };
 		C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5DF2BD009630045527C /* RootCoordinator.swift */; };
 		C224C5E52BD009C00045527C /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5E42BD009C00045527C /* Coordinator.swift */; };
@@ -26,6 +23,8 @@
 		C224C5EE2BD00A960045527C /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C224C5ED2BD00A960045527C /* HomeCoordinator.swift */; };
 		C265FD1A2BD2999700741E94 /* LoadableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD192BD2999700741E94 /* LoadableObject.swift */; };
 		C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */; };
+		C297B8BB2BD5431400A16CE5 /* UIButton+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8BA2BD5431400A16CE5 /* UIButton+Extensions.swift */; };
+		C297B8BE2BD54CC700A16CE5 /* PlacemarkSearchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */; };
 		C2B8D5112BD025B4007529A6 /* APIRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */; };
 		C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */; };
 		C2B8D5152BD025FE007529A6 /* APIErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */; };
@@ -44,23 +43,6 @@
 		C2E8941F2BD1CADE008B7472 /* SearchLocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2E8941E2BD1CADE008B7472 /* SearchLocationViewModel.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C224C5BF2BD007FF0045527C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C224C5A02BD007FC0045527C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C224C5A72BD007FC0045527C;
-			remoteInfo = NVibe;
-		};
-		C224C5C92BD007FF0045527C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C224C5A02BD007FC0045527C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C224C5A72BD007FC0045527C;
-			remoteInfo = NVibe;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		C2024BFD2BD41656005793A4 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		C2024C002BD41BD9005793A4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -73,11 +55,6 @@
 		C224C5B42BD007FF0045527C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C224C5B72BD007FF0045527C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C224C5B92BD007FF0045527C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C224C5BE2BD007FF0045527C /* NVibeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NVibeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C224C5C22BD007FF0045527C /* NVibeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeTests.swift; sourceTree = "<group>"; };
-		C224C5C82BD007FF0045527C /* NVibeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NVibeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C224C5CC2BD007FF0045527C /* NVibeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITests.swift; sourceTree = "<group>"; };
-		C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NVibeUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		C224C5DC2BD008470045527C /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		C224C5DF2BD009630045527C /* RootCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootCoordinator.swift; sourceTree = "<group>"; };
 		C224C5E42BD009C00045527C /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -85,6 +62,8 @@
 		C224C5ED2BD00A960045527C /* HomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		C265FD192BD2999700741E94 /* LoadableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableObject.swift; sourceTree = "<group>"; };
 		C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionButton.swift; sourceTree = "<group>"; };
+		C297B8BA2BD5431400A16CE5 /* UIButton+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extensions.swift"; sourceTree = "<group>"; };
+		C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacemarkSearchButton.swift; sourceTree = "<group>"; };
 		C2B8D5102BD025B4007529A6 /* APIRequestManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequestManager.swift; sourceTree = "<group>"; };
 		C2B8D5122BD025E7007529A6 /* URLRequestBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestBuilder.swift; sourceTree = "<group>"; };
 		C2B8D5142BD025FE007529A6 /* APIErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIErrorHandler.swift; sourceTree = "<group>"; };
@@ -112,20 +91,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C224C5BB2BD007FF0045527C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C224C5C52BD007FF0045527C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -133,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				C2024BFD2BD41656005793A4 /* Double+Extensions.swift */,
+				C297B8BA2BD5431400A16CE5 /* UIButton+Extensions.swift */,
 				C2024C072BD459B6005793A4 /* UIImage+Extensions.swift */,
 			);
 			path = Extensions;
@@ -160,8 +126,6 @@
 			isa = PBXGroup;
 			children = (
 				C224C5AA2BD007FC0045527C /* NVibe */,
-				C224C5C12BD007FF0045527C /* NVibeTests */,
-				C224C5CB2BD007FF0045527C /* NVibeUITests */,
 				C224C5A92BD007FC0045527C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -170,8 +134,6 @@
 			isa = PBXGroup;
 			children = (
 				C224C5A82BD007FC0045527C /* NVibe.app */,
-				C224C5BE2BD007FF0045527C /* NVibeTests.xctest */,
-				C224C5C82BD007FF0045527C /* NVibeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -180,33 +142,17 @@
 			isa = PBXGroup;
 			children = (
 				C224C5DC2BD008470045527C /* .swiftlint.yml */,
-				C2024BFC2BD41643005793A4 /* Extensions */,
 				C224C5DE2BD009510045527C /* App */,
 				C2B8D51E2BD029EA007529A6 /* Configuration */,
+				C2024BFC2BD41643005793A4 /* Extensions */,
 				C2B8D5222BD04E2A007529A6 /* Model */,
 				C224C5EA2BD00A680045527C /* Resources */,
 				C224C5EB2BD00A7D0045527C /* Scenes */,
 				C2B8D50D2BD0257E007529A6 /* Service */,
+				C297B8BC2BD54C7100A16CE5 /* UIView */,
 				C224C5B92BD007FF0045527C /* Info.plist */,
 			);
 			path = NVibe;
-			sourceTree = "<group>";
-		};
-		C224C5C12BD007FF0045527C /* NVibeTests */ = {
-			isa = PBXGroup;
-			children = (
-				C224C5C22BD007FF0045527C /* NVibeTests.swift */,
-			);
-			path = NVibeTests;
-			sourceTree = "<group>";
-		};
-		C224C5CB2BD007FF0045527C /* NVibeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				C224C5CC2BD007FF0045527C /* NVibeUITests.swift */,
-				C224C5CE2BD007FF0045527C /* NVibeUITestsLaunchTests.swift */,
-			);
-			path = NVibeUITests;
 			sourceTree = "<group>";
 		};
 		C224C5DE2BD009510045527C /* App */ = {
@@ -271,7 +217,6 @@
 				C224C5ED2BD00A960045527C /* HomeCoordinator.swift */,
 				C2B918432BD16943004F909B /* HomeViewModel.swift */,
 				C224C5AF2BD007FC0045527C /* HomeViewController.swift */,
-				C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -282,6 +227,15 @@
 				C265FD192BD2999700741E94 /* LoadableObject.swift */,
 			);
 			path = "Loading State";
+			sourceTree = "<group>";
+		};
+		C297B8BC2BD54C7100A16CE5 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				C265FD1B2BD2E1AA00741E94 /* DirectionButton.swift */,
+				C297B8BD2BD54CC700A16CE5 /* PlacemarkSearchButton.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 		C2B8D50D2BD0257E007529A6 /* Service */ = {
@@ -374,42 +328,6 @@
 			productReference = C224C5A82BD007FC0045527C /* NVibe.app */;
 			productType = "com.apple.product-type.application";
 		};
-		C224C5BD2BD007FF0045527C /* NVibeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C224C5D52BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeTests" */;
-			buildPhases = (
-				C224C5BA2BD007FF0045527C /* Sources */,
-				C224C5BB2BD007FF0045527C /* Frameworks */,
-				C224C5BC2BD007FF0045527C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C224C5C02BD007FF0045527C /* PBXTargetDependency */,
-			);
-			name = NVibeTests;
-			productName = NVibeTests;
-			productReference = C224C5BE2BD007FF0045527C /* NVibeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		C224C5C72BD007FF0045527C /* NVibeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C224C5D82BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeUITests" */;
-			buildPhases = (
-				C224C5C42BD007FF0045527C /* Sources */,
-				C224C5C52BD007FF0045527C /* Frameworks */,
-				C224C5C62BD007FF0045527C /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C224C5CA2BD007FF0045527C /* PBXTargetDependency */,
-			);
-			name = NVibeUITests;
-			productName = NVibeUITests;
-			productReference = C224C5C82BD007FF0045527C /* NVibeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -422,14 +340,6 @@
 				TargetAttributes = {
 					C224C5A72BD007FC0045527C = {
 						CreatedOnToolsVersion = 15.3;
-					};
-					C224C5BD2BD007FF0045527C = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = C224C5A72BD007FC0045527C;
-					};
-					C224C5C72BD007FF0045527C = {
-						CreatedOnToolsVersion = 15.3;
-						TestTargetID = C224C5A72BD007FC0045527C;
 					};
 				};
 			};
@@ -450,8 +360,6 @@
 			projectRoot = "";
 			targets = (
 				C224C5A72BD007FC0045527C /* NVibe */,
-				C224C5BD2BD007FF0045527C /* NVibeTests */,
-				C224C5C72BD007FF0045527C /* NVibeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -464,20 +372,6 @@
 				C224C5DD2BD008470045527C /* .swiftlint.yml in Resources */,
 				C224C5B52BD007FF0045527C /* Assets.xcassets in Resources */,
 				C224C5B82BD007FF0045527C /* Base in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C224C5BC2BD007FF0045527C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C224C5C62BD007FF0045527C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,8 +407,10 @@
 				C224C5E72BD009D20045527C /* BaseCoordinator.swift in Sources */,
 				C2B8D51C2BD02673007529A6 /* HomeNetworkServiceProvider.swift in Sources */,
 				C265FD1A2BD2999700741E94 /* LoadableObject.swift in Sources */,
+				C297B8BB2BD5431400A16CE5 /* UIButton+Extensions.swift in Sources */,
 				C2024BFE2BD41656005793A4 /* Double+Extensions.swift in Sources */,
 				C265FD1C2BD2E1AA00741E94 /* DirectionButton.swift in Sources */,
+				C297B8BE2BD54CC700A16CE5 /* PlacemarkSearchButton.swift in Sources */,
 				C2B8D5132BD025E7007529A6 /* URLRequestBuilder.swift in Sources */,
 				C224C5E02BD009630045527C /* RootCoordinator.swift in Sources */,
 				C2B918442BD16943004F909B /* HomeViewModel.swift in Sources */,
@@ -541,37 +437,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		C224C5BA2BD007FF0045527C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C224C5C32BD007FF0045527C /* NVibeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C224C5C42BD007FF0045527C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C224C5CD2BD007FF0045527C /* NVibeUITests.swift in Sources */,
-				C224C5CF2BD007FF0045527C /* NVibeUITestsLaunchTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C224C5C02BD007FF0045527C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C224C5A72BD007FC0045527C /* NVibe */;
-			targetProxy = C224C5BF2BD007FF0045527C /* PBXContainerItemProxy */;
-		};
-		C224C5CA2BD007FF0045527C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C224C5A72BD007FC0045527C /* NVibe */;
-			targetProxy = C224C5C92BD007FF0045527C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C224C5B62BD007FF0045527C /* LaunchScreen.storyboard */ = {
@@ -774,82 +640,6 @@
 			};
 			name = Release;
 		};
-		C224C5D62BD007FF0045527C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V54XUHS56L;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NVibe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NVibe";
-			};
-			name = Debug;
-		};
-		C224C5D72BD007FF0045527C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V54XUHS56L;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/NVibe.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/NVibe";
-			};
-			name = Release;
-		};
-		C224C5D92BD007FF0045527C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V54XUHS56L;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NVibe;
-			};
-			name = Debug;
-		};
-		C224C5DA2BD007FF0045527C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V54XUHS56L;
-				GENERATE_INFOPLIST_FILE = YES;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = raphael.huangdubois.NVibeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = NVibe;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -867,24 +657,6 @@
 			buildConfigurations = (
 				C224C5D32BD007FF0045527C /* Debug */,
 				C224C5D42BD007FF0045527C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C224C5D52BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C224C5D62BD007FF0045527C /* Debug */,
-				C224C5D72BD007FF0045527C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		C224C5D82BD007FF0045527C /* Build configuration list for PBXNativeTarget "NVibeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C224C5D92BD007FF0045527C /* Debug */,
-				C224C5DA2BD007FF0045527C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

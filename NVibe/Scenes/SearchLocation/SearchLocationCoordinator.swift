@@ -16,16 +16,16 @@ final class SearchLocationCoordinator: BaseCoordinator {
     var finishFlow: (() -> Void)?
     
     private var parentViewController: HomeViewController
-    private var isSearchingADestination: Bool
+    private var isSearchingArrival: Bool
     
-    init(parentViewController: HomeViewController, isSearchingADestination: Bool) {
+    init(parentViewController: HomeViewController, isSearchingArrival: Bool) {
         self.parentViewController = parentViewController
-        self.isSearchingADestination = isSearchingADestination
+        self.isSearchingArrival = isSearchingArrival
     }
     
     private lazy var searchLocationViewController: SearchLocationViewController = {
         let viewModel: SearchLocationViewModelRepresentable = SearchLocationViewModel(flowDelegate: self)
-        let viewController = SearchLocationViewController(viewModel: viewModel, isSearchingADestination: isSearchingADestination)
+        let viewController = SearchLocationViewController(viewModel: viewModel, isSearchingArrival: isSearchingArrival)
         return viewController
     }()
         
@@ -39,17 +39,17 @@ extension SearchLocationCoordinator: SearchLocationCoordinatorFlowDelegate {
     func closeView() {
         parentViewController.dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            if searchLocationViewController.isSearchingADestination {
-                if parentViewController.viewModel.selectedDestination == nil {
-                    self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.selectedDestination
-                    self.parentViewController.viewModel.didSelectFirstDestination?()
+            if searchLocationViewController.isSearchingArrival {
+                if parentViewController.viewModel.selectedPlacemarkArrival == nil {
+                    self.parentViewController.viewModel.selectedPlacemarkArrival = searchLocationViewController.viewModel.selectedPlacemarkArrival
+                    self.parentViewController.viewModel.didSelectFirstArrival?()
                 } else {
-                    self.parentViewController.viewModel.selectedDestination = searchLocationViewController.viewModel.selectedDestination
-                    self.parentViewController.viewModel.didSelectNewDestination?()
+                    self.parentViewController.viewModel.selectedPlacemarkArrival = searchLocationViewController.viewModel.selectedPlacemarkArrival
+                    self.parentViewController.viewModel.didSelectNewArrival?()
                 }
             } else {
-                self.parentViewController.viewModel.selectedOrigin = searchLocationViewController.viewModel.selectedOrigin
-                self.parentViewController.viewModel.didSelectNewOrigin?()
+                self.parentViewController.viewModel.selectedPlacemarkStart = searchLocationViewController.viewModel.selectedPlacemarkStart
+                self.parentViewController.viewModel.didSelectNewStart?()
             }
             finishFlow?()
         }

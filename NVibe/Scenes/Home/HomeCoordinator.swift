@@ -11,7 +11,7 @@ import MapboxDirections
 
 protocol HomeCoordinatorFlowDelegate: AnyObject {
     var navigationViewController: NavigationViewController? { get set }
-    func displaySearchLocationView(forDestination: Bool)
+    func displaySearchLocationView(forArrival: Bool)
     func displayMapboxNavigation()
 }
 
@@ -39,8 +39,8 @@ final class HomeCoordinator: BaseCoordinator, HomeCoordinatorFlowDelegate {
         navigationController.pushViewController(homeViewController, animated: true)
     }
     
-    func displaySearchLocationView(forDestination isSearchingADestination: Bool) {
-        let coordinator = SearchLocationCoordinator(parentViewController: homeViewController, isSearchingADestination: isSearchingADestination)
+    func displaySearchLocationView(forArrival isSearchingArrival: Bool) {
+        let coordinator = SearchLocationCoordinator(parentViewController: homeViewController, isSearchingArrival: isSearchingArrival)
         coordinator.finishFlow = { [self, unowned coordinator] in
             remove(coordinator: coordinator)
         }

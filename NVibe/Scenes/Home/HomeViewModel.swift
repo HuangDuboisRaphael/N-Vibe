@@ -11,46 +11,48 @@ import CoreLocation
 import MapboxDirections
 import MapboxCoreNavigation
 
+typealias Placemark = (name: String, coordinate: CLLocationCoordinate2D)
+
 protocol HomeViewModelRepresentable: LoadableObject {
-    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
-    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)? { get set }
+    var selectedPlacemarkStart: Placemark? { get set }
+    var selectedPlacemarkArrival: Placemark? { get set }
     var routeOptions: NavigationRouteOptions { get }
     var routeResponse: RouteResponse? { get set }
     var direction: Direction? { get }
     var isLoadingBackgroundTasks: (() -> Void)? { get set }
-    var didSelectFirstDestination: (() -> Void)? { get set }
-    var didSelectNewOrigin: (() -> Void)? { get set }
-    var didSelectNewDestination: (() -> Void)? { get set }
+    var didSelectFirstArrival: (() -> Void)? { get set }
+    var didSelectNewStart: (() -> Void)? { get set }
+    var didSelectNewArrival: (() -> Void)? { get set }
     var didCalculateRoute: (() -> Void)? { get set }
     var indicationLabelText: String { get }
     var lineCoordinates: [CLLocationCoordinate2D] { get }
     
     func calculateRouteWithApi()
     func tryDisplayingMapboxNavigation()
-    func displaySearchLocationView(forDestination: Bool)
+    func displaySearchLocationView(isSearchingArrival: Bool)
 }
 
 final class HomeViewModel: HomeViewModelRepresentable {
     var isLoadingBackgroundTasks: (() -> Void)?
     
-    var selectedOrigin: (name: String, coordinate: CLLocationCoordinate2D)?
+    var selectedPlacemarkStart: Placemark?
     
-    var didSelectNewOrigin: (() -> Void)?
+    var didSelectNewStart: (() -> Void)?
     
-    var didSelectNewDestination: (() -> Void)?
+    var didSelectNewArrival: (() -> Void)?
     
-    private var origin: Waypoint {
-        Waypoint(coordinate: self.selectedOrigin?.coordinate ?? LocationManager.shared.currentLocation.coordinate, coordinateAccuracy: -1, name: "Start")
+    private var startWaypoint: Waypoint {
+        Waypoint(coordinate: self.selectedPlacemarkStart?.coordinate ?? LocationManager.shared.currentLocation.coordinate, coordinateAccuracy: -1, name: "Start")
     }
     
-    private var destination: Waypoint {
-        Waypoint(coordinate: self.selectedDestination?.coordinate ?? CLLocationCoordinate2D(), coordinateAccuracy: -1, name: "Finish")
+    private var arrivalWaypoint: Waypoint {
+        Waypoint(coordinate: self.selectedPlacemarkArrival?.coordinate ?? CLLocationCoordinate2D(), coordinateAccuracy: -1, name: "Finish")
     }
     
     var routeOptions: NavigationRouteOptions {
-        NavigationRouteOptions(waypoints: [origin, destination], profileIdentifier: .walking)
+        NavigationRouteOptions(waypoints: [startWaypoint, arrivalWaypoint], profileIdentifier: .walking)
     }
-    var didSelectFirstDestination: (() -> Void)?
+    var didSelectFirstArrival: (() -> Void)?
     var didCalculateRoute: (() -> Void)?
     var routeResponse: RouteResponse?
     
@@ -70,7 +72,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
         }
     }
     
-    var selectedDestination: (name: String, coordinate: CLLocationCoordinate2D)?
+    var selectedPlacemarkArrival: Placemark?
     var direction: Direction?
     var indicationLabelText: String {
         guard let direction = direction else { return "" }
@@ -79,9 +81,9 @@ final class HomeViewModel: HomeViewModelRepresentable {
     
     private var cancellables = Set<AnyCancellable>()
     private var coordinatesToQuery: String {
-        guard let selectedDestination = selectedDestination else { return "" }
-        return selectedOrigin == nil ? "\(LocationManager.shared.currentLocation.coordinate.longitude),\(LocationManager.shared.currentLocation.coordinate.latitude);\(selectedDestination.coordinate.longitude),\(selectedDestination.coordinate.latitude)" :
-            "\(selectedOrigin!.coordinate.longitude),\(selectedOrigin!.coordinate.latitude);\(selectedDestination.coordinate.longitude),\(selectedDestination.coordinate.latitude)"
+        guard let arrival = selectedPlacemarkArrival else { return "" }
+        return selectedPlacemarkStart == nil ? "\(LocationManager.shared.currentLocation.coordinate.longitude),\(LocationManager.shared.currentLocation.coordinate.latitude);\(arrival.coordinate.longitude),\(arrival.coordinate.latitude)" :
+            "\(selectedPlacemarkStart!.coordinate.longitude),\(selectedPlacemarkStart!.coordinate.latitude);\(arrival.coordinate.longitude),\(arrival.coordinate.latitude)"
     }
     var lineCoordinates: [CLLocationCoordinate2D] {
         guard let direction = direction else { return [] }
@@ -143,7 +145,7 @@ final class HomeViewModel: HomeViewModelRepresentable {
             .store(in: &cancellables)
     }
     
-    func displaySearchLocationView(forDestination: Bool) {
-        flowDelegate.displaySearchLocationView(forDestination: forDestination)
+    func displaySearchLocationView(isSearchingArrival: Bool) {
+        flowDelegate.displaySearchLocationView(forArrival: isSearchingArrival)
     }
 }
